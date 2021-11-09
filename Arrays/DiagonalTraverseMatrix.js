@@ -5,6 +5,7 @@ var mat=[
         [16,17,18,19,20],
         [21,22,23,24,25]
        ]
+       
 var n=mat.length;
 var m=mat[0].length;
 var arr=[];
