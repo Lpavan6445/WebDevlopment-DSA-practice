@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+    <style>
+        body{
+            width:600px;
+            margin:30px auto;
+            text-align: center;
+            border: 1px solid whitesmoke;
+            padding: 30px;
+            color: violet;
+            background-color: black;
+        }
+        input{
+            height: 30px;
+            width: 140px;
+            margin-right: 15px;
+        }
+        #gender{
+            height: 30px;
+            margin-right: 15px;
+        }
+        button{
+            width: 100px;
+            height: 50px;
+            margin-right: 15px;
+        }    
+    </style>
+</head>
+<body>
+	<input type="text" name="name" id="name" placeholder="name">
+	<select id="gender">
+		<option value="">--</option>
+		<option value="male">M</option>
+		<option value="female">F</option>
+	</select>
+	<input type="text" name="email" id="email" placeholder="email">
+	<input type="text" name="mobile" id="mobile" placeholder="mobile">
+	<hr>
+	<h1 id="dName">NAME</h1>
+	<h2 id="dGender">GENDER</h2>
+	<h3 id="dEmail">EMAIL</h3>
+	<h4 id="dMobile">MOBILE</h4>
+	<hr>
+	<button onclick="showName()">NAME</button>
+	<button onclick="showGender()">GENDER</button>
+	<button onclick="showEmail()">EMAIL</button>
+	<button onclick="showMobile()">MOBILE</button>
+	<button class="res" onclick="resetForm()">RESET FORM</button>
+	<script type="text/javascript">
+		function showName() {
+        // Show filled name inside h1
+        var nm = document.getElementById("name").value;
+        document.getElementById("dName").textContent = nm;
+      }
+
+      function showGender() {
+        // Show the selected gender inside h2
+        var gn = document.getElementById("gender").value;
+        document.getElementById("dGender").textContent = gn;
+      }
+      function showEmail() {
+        // Show the filled email inside h3
+        var em = document.getElementById("email").value;
+        document.getElementById("dEmail").textContent = em;
+      }
+      function showMobile() {
+        var mb = document.getElementById("mobile").value;
+        document.getElementById("dMobile").textContent = mb;
+      }
+      function resetForm() {
+        // Reset all the form elements to default values (blank "")
+        document.getElementById("name").value = document.getElementById(
+          "gender"
+        ).value = "";
+      }
+	</script>
+</body>
+</html>

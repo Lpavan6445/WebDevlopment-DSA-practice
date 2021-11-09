@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>Practise Selectors</title>
+        <style>
+            body{
+                width: 600px;
+                margin: auto;
+                text-align: center;
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>First H1</h1>
+        <h1>Second H1</h1>
+        <h3>First H3</h3>
+        <h3>Second H3</h3>
+        <h5>First H5</h5>
+        <h5>Second H5</h5>
+        <h5>Third H5</h5>
+        <div class="green">First DIV</div>
+        <div class="red">Second DIV</div>
+        <div class="blue">Third DIV</div>
+        <p class="green">First P</p>
+        <p class="red">Second P</p>
+        <p class="blue">Third P</p>
+        <hr/>
+        <button onclick="changeh1()">Change H1</button>
+        <button onclick="changeh3()">Change H3</button>
+        <button onclick="changeh5()">Change H5</button>
+        <button onclick="changGreen()">Change Green</button>
+        <button onclick="changeRed()">Change Red</button>
+        <button onclick="changeblue()">Change Blue</button>
+        <script>
+        </script>
+    </body>
+
+    <!--
+        On clicking Change Green all the elements with the class green should change to green
+        On clicking Change Blue all the elements with the class blue should change to blue
+        On clicking Change Red all the elements with the class red should change to red -->
+        <script>
+              function changeh1(){
+                   document.querySelector("h1").style.color="red"
+              }
+              function changeh3(){
+                  var arr=document.querySelectorAll("h3");
+                  for(var i=0; i<arr.length; i++){
+                      arr[i].style.color="green"
+                  }
+              }
+              function changeh5(){
+                  var ar=document.querySelectorAll("h5")
+                  for(var i=0; i<ar.length; i++){
+                      ar[i].style.color="blue"
+                  }
+              }
+              function changGreen(){
+                  var gr=document.querySelectorAll(".green")
+                  for(var i=0; i<gr.length; i++){
+                     gr[i].style.color="green"
+                  }
+              }
+              function changeRed(){
+                  var re=document.getElementsByClassName("red")
+                  for(var i=0; i<re.length; i++){
+                    re[i].style.color="red"
+                  }
+              }
+              function changeblue(){
+                  var bl=document.getElementsByClassName("blue")
+                  for(var i=0; i<bl.length; i++){
+                      bl[i].style.color="blue"
+                  }
+              }
+        </script>
+
+</html>

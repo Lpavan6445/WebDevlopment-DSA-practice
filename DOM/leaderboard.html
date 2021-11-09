@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 450px;
+            border: 1px solid red;
+            margin: auto;
+            text-align: center;
+            font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+        }
+        .maxMin{
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 30px;  
+        }
+        .maxMin >div{
+            min-width: 180px;   
+        }
+        .maxMin > div >h1{
+            font-size: 22px;
+        }
+
+        #min{
+            height: 50px;
+            padding: 30px 0 6px;
+            font-size: 25px;
+            font-weight: bold;
+            border-radius: 20px;
+            background-color: rgba(255, 0, 0, 0.616);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+          rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+        #max{
+            height: 50px;
+            padding: 30px 0 6px;
+            font-size: 25px;
+            font-weight: bold;
+            border-radius: 20px;
+            background-color: rgb(4, 255, 4);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+          rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+        .sc{
+            width: 200px;
+            height: 40px;
+            margin: auto;
+            padding: 20px 0 6px;
+            border: 1px solid red;
+        }
+        .tsc{
+            margin: 0px;
+        }
+        #container {
+        display: grid;
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 100px 100px 100px 100px;
+        grid-gap: 20px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(129, 32, 32, 0.3) 0px 30px 60px -30px,
+          rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        width: 340px;
+        padding: 20px;
+        margin: auto;
+      }
+      #container > button {
+        font-size: 30px;
+        background-color: rgb(255, 255, 255);
+        border:3px solid black;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        border-radius: 50%;
+      }
+      #container > button:nth-last-child(1){
+          justify-items: center;
+      }
+      #score {
+        width: 270px;
+        height: 70px;
+        border: 1px solid grey;
+        font-size: 40px;
+        text-align: center;
+        padding-top: 15px;
+        margin: auto;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        background-color: rgb(71, 255, 246);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+          rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      }
+      #enter{
+          width:200px;
+            height: 40px;
+            font-size: 25px;
+            margin-top: 5px;
+            color: blanchedalmond;
+            background-color: rgb(5, 5, 5);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+          rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+      }
+    </style>
+</head>
+<body>
+    <div class="maxMin">
+        <div>
+           <p  id="min">60</p>
+            <h1>MIN</h1>
+        </div>
+        <div >
+            <p id="max">200</p>
+            <h1>MAX</h1>
+        </div>
+    </div>
+   
+        
+     <div id="score"></div>
+    <div id="container">
+      <button onclick="press('1')">1</button>
+      <button onclick="press('2')">2</button>
+      <button onclick="press('3')">3</button>
+      <button onclick="press('4')">4</button>
+      <button onclick="press('5')">5</button>
+      <button onclick="press('6')">6</button>
+      <button onclick="press('7')">7</button>
+      <button onclick="press('8')">8</button>
+      <button onclick="press('9')">9</button>
+      <button onclick="press('0')">0</button>
+    </div>
+    <button id="enter" >ENTER</button> 
+
+</body>
+   <script>
+    var ans = "";
+    var min=60;
+    var max=200;
+        function press(num) {
+            ans = ans + num;
+            document.getElementById("score").textContent = ans;
+        }
+        document.getElementById("enter").addEventListener("click",chang)
+        function chang(){
+            if(ans >max){
+                 max=ans;
+                document.getElementById("max").textContent=ans;
+            }else if(ans < min){
+                 min=ans
+                document.getElementById("min").textContent=ans;
+            }
+            document.getElementById("score").textContent="";
+            ans="";
+        }
+   
+    //       
+   </script>
+
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Change the buttons text color random value</h1>
+  <button>Click here to change my color</button>
+ 
+</body>
+<script>
+     var btn=document.querySelector("button")
+     btn.addEventListener("click",random)
+     function random(){
+       document.querySelector("h1").style.color=`rgb(${Math.floor(Math.random()*250)},${Math.floor(Math.random()*250)},${Math.floor(Math.random()*250)}`
+     }
+</script>
+</html>

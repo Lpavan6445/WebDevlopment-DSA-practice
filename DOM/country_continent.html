@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">`
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id = "continent_select">
+        <option value = "asia"> India </option>
+        <option value="North and Central America">United States of America</option>
+        <option value="asia">China</option>
+        <option value="asia">Nepal</option>
+        <option value="Antarctica">Australia</option>
+        <option value="Europe">France</option>
+        <option value="Europe">Germany</option>
+        <option value="Africa">South Africa</option>
+        <option value="africa">Nigeria</option>
+        <option value="North and Central America">Mexico</option>
+        <option value="South America">Argentina</option>
+        <option value="South America">Brazil</option>
+        <option value="North and Central America">Canada</option>
+        <option value="Asia">Singapore</option>
+        <option value="Europe">Sweden</option>   
+    </select>
+    <button onclick="btn()" id="button" >Find continent</button>
+</body>
+</html>
+
+<script>
+      function btn(){
+        alert(document.getElementById("continent_select").value)
+      }
+</script>

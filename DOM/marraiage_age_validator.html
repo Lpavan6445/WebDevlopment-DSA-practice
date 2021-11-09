@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="gen">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+     <input type="number" id="yob" placeholder="Year Of Birth">
+     <button id="btn" onclick="btn()">Check</button>
+</body>
+<script>
+       function btn(){
+         var m=document.getElementById("gen").value
+          var yo=document.getElementById("yob").value
+          var age=2021-yo
+          if(m=="male" && age >=21 || m=="female" && age >=18 ){
+              alert("Legal to Marry")
+          }else{
+              alert("Not a Legal Age!")
+          }
+       }
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 400px;
+            margin: auto;
+        }
+        p{
+            font-size: 30px;
+            font-family: sans-serif;
+            height: 38px;
+        }
+        input{
+            height:30px
+        }
+        button{
+            height: 33px;
+        }
+    </style>
+</head>
+<body>
+    <p> </p>
+    <input type="number" placeholder="Enter Age"/>
+    <button onclick="ageCheck()">Age Check</button>
+</body>
+<script>
+    function ageCheck(){
+        var age=document.querySelector("input").value
+        if(age >18){
+            document.querySelector("p").textContent="You can drive in India!"
+        }else if(age <18){
+            document.querySelector("p").textContent="You can't drive in India"
+        }else{
+            document.querySelector("p").textContent="You are just old enough to drive in India!"
+        }
+    }
+</script>
+
+  
+</html>
