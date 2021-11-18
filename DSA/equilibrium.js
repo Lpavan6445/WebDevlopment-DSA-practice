@@ -4,13 +4,13 @@ function checkEquil(n,arr){
     for(var i=0; i<n; i++){
         sum+=arr[i]
     }
-  var right=0;
+  var left=0;
     for(var i=0; i<n; i++){
         sum-=arr[i]
-        if(right == sum){
+        if(left == sum){
             return i+1
         }else{
-            right+=arr[i]
+            left+=arr[i]
         }
     }
     return -1;
