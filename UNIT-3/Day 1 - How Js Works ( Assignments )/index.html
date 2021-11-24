@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+       #txt{
+           max-width: 400px;
+       }
+   </style>
+</head>
+<body>
+    <button onclick='show("x1")'>Objects</button>
+    <button onclick="show('x2')">Arrays</button>
+    <button onclick="show('x3')">Functions</button>
+    <button onclick="show('x4')">Strings</button>
+    <button onclick="show('x5')">Numbers</button>
+    <button onclick="show('x6')">null</button>
+    <button onclick="show('x7')">undefined</button>
+    <h4 id="txt"></h4>
+</body>
+<script>
+    var obj={
+        x1:"A javaScript object is an entity having state and behavior (properties and method). For example: car, pen, bike, chair, glass, keyboard, monitor etc.JavaScript is an object-based language. Everything is an object in JavaScript.JavaScript is template based not class based. Here, we don't create class to get the object. But, we direct create objects.",
+        x2:"An array is a special type of variable, which can store multiple values using special syntax. Every value is associated with numeric index starting with 0.An array in JavaScript can be defined and initialized in two ways, array literal and Array constructor syntax",
+        x3:" JavaScript function is a block of code designed to perform a particular task.A JavaScript function is executed when 'something' invokes it (calls it).A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses ().Function names can contain letters, digits, underscores, and dollar signs (same rules as variables).",
+        x4:"A JavaScript string is zero or more characters written inside quotes.You can use single or double quotes:You can use quotes inside a string, as long as they don't match the quotes surrounding the string:To find the length of a string, use the built-in length property:",
+        x5:"JavaScript has only one type of number. Numbers can be written with or without decimals.Extra large or extra small numbers can be written with scientific (exponent) notationnlike many other programming languages, JavaScript does not define different types of numbers, like integers, short, long, floating-point etc.",
+        x6:"The value null represents the intentional absence of any object value. It is one of JavaScript's primitive values and is treated as falsy for boolean operations.The value null is written with a literal: null. null is not an identifier for a property of the global object, like undefined can be. Instead, null expresses a lack of identification, indicating that a variable points to no object",
+        x7:"The global undefined property represents the primitive value undefined. It is one of JavaScript's primitive types.undefined is a property of the global object. That is, it is a variable in global scope. The initial value of undefined is the primitive value undefined."    
+    }
+    var h = document.getElementById("txt")
+  function show(x){
+      h.innerHTML = obj[`${x}`]
+      console.log(obj[`${x}`]);
+  }
+</script>
+</html>
