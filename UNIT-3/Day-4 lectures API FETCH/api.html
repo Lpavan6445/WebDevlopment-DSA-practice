@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wall{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+        #wall >div{
+            width: 25%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wall">
+
+    </div>
+</body>
+
+<script>
+    let url = "https://reqres.in/api/users?page=2"
+    let wall = document.getElementById("wall")
+    fetch(url)
+    .then(function(response) {
+        return response.json()
+    }).then(function(res) {
+        const data = res.data
+        appendProducts(data)
+        console.log(data);
+    })
+    .catch(function(error) {
+        console.log(error);
+    })
+ 
+    function appendProducts(users_array){
+        users_array.forEach(function(user){
+               
+           let div = document.createElement('div');
+
+           let img = document.createElement('img');
+           img.src = user.avatar
+
+           let name = document.createElement('p')
+           name.innerText = `${user.first_name} ${user.last_name}`
+
+           let email = document.createElement('p')
+           email.innerText = user.email
+ 
+           div.append(img,name,email)
+           wall.append(div)
+        })
+    }
+
+</script>
+</html>
