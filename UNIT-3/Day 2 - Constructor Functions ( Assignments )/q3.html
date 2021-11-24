@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{
+          width: 600px;
+          margin: 20;
+       }
+       .todoMBox{
+         margin-top: 30px;
+       }
+       .todoDiv{
+          display: flex;
+          border:1px solid red;
+          padding:10px;
+       }
+       .todoDiv > button{
+          width:100px;
+          height: 30px;
+          margin-left: 20px;
+          margin-right: 20px;
+          margin-top: auto;
+          margin-bottom: auto;
+       }
+       #tTodo{
+           position:absolute;
+           top:58px;
+           left:300px;
+       }
+    </style>
+</head>
+<body>
+    <h1>TODO LIST</h1>
+    <input id="ts" type="text" placeholder="Task Name">
+    <button id= "btn">Submit</button>
+    <h3 id="tTodo">Total: 0</h3>
+    <div class="todoMBox">
+
+      
+    </div>
+ </body>
+<script>
+  //------------constructor---------------
+     function todoConstructor(ts) {
+        this.tasks = ts
+        this.date = new Date()
+        this.status = false
+     }
+  // <---------------------------------> 
+   let btn = document.getElementById("btn")
+   btn.addEventListener("click",createTodo)
+
+   let todosData = []
+   
+   function createTodo() {
+       let taskName = document.getElementById("ts")
+       
+       let todo = new todoConstructor(taskName.value)
+
+       console.log(todo)
+
+       todosData.push(todo)
+       
+       showTodo()
+   }
+
+   function showTodo() {
+      let todoMBox = document.querySelector(".todoMBox")
+      todoMBox.textContent =""
+
+      let ttl = document.getElementById("tTodo")
+      ttl.textContent = `Total: ${todosData.length}`
+     console.log(todosData.length)
+      todosData.forEach(function(el,index) {
+         console.log(el.tasks)
+         let todoDiv = document.createElement("div")
+         todoDiv.className = "todoDiv"
+         todoDiv.id = index
+         
+         let tsk = document.createElement("h3")
+         tsk.textContent = el.tasks
+
+         let togl = document.createElement("button")
+         togl.addEventListener("click",function(){
+            toggle_task(index)
+         })
+         togl.textContent = "Done"
+         
+         
+         let date = document.createElement("h3")
+         date.textContent = el.date.getHours() + ":" + el.date.getMinutes() + ":" + el.date.getSeconds(); 
+        
+
+         if(el.status == false){
+             togl.style.backgroundColor = "red"
+             togl.style.color = "white"
+             tsk.style.textDecoration ="none"
+         }else {
+            togl.style.backgroundColor = "green"
+             togl.style.color = "white"
+             tsk.style.textDecoration = "line-through"
+         }
+       
+         let rbtn = document.createElement("button")
+         rbtn.textContent ="Remove"
+          rbtn.addEventListener("click",function(){
+             remove(index)
+          })
+
+         todoDiv.append(tsk,togl,date,rbtn)
+         todoMBox.append(todoDiv)
+      })
+
+   }
+//  <-------------------Toggle Button------------------------------->
+   function toggle_task(id){
+       console.log(todosData[0].status)
+        todosData.forEach(function(el,ind){
+            if(id == ind){
+            el.status = el.status == true ? false : true;
+            
+            }
+        })
+        showTodo()
+        console.log(todosData[0].status)
+   }
+// <--------------To Remove todo------------------------->
+   function remove(id){
+    todosData.splice(id, 1)
+    showTodo()
+   }
+ 
+</script>
+
+</html>
