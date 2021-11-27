@@ -4,9 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Signup</title>
+    <style>
+     /* <------------------SignUp---------------------> */
+        #signup{
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1.5px solid  black;
+        }
+        #signup >input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        #signup>button{
+            width: 98%;
+            padding: 10px;
+        }
+   
+   
+   
+   </style> 
 </head>
 <body>
-    Booking
+     <!-- <------------Book Tickets-------------->
+        <div id="signup">
+            <input id="name" type="text" placeholder="Enter your Name">
+            <input id="number" type="number" placeholder="Mobile Number">
+            <input id="email" type="email" placeholder="Email">
+            <input id="NoOfTickets" type="NoOfTickets" placeholder="NoOfTickets">
+            <input id="trainName" type="text" placeholder="Enter Train Name">
+            <button id="btn" >Submit</button>
+        </div>
+     
 </body>
+    <script>
+        var btn = document.getElementById("btn")
+        btn.addEventListener("click", sumbit)
+        var BookTicket = JSON.parse(localStorage.getItem("BookTicket")) || []
+        function sumbit(){
+            var name=document.getElementById("name").value;
+            var number=document.getElementById("number").value;
+            var email=document.getElementById("email").value;
+            var trainName = document.getElementById("trainName").value;
+            var NoOfTickets=document.getElementById("NoOfTickets").value;
+
+             if(name == "" ||number == "" ||email == "" ||NoOfTickets == ""){
+                 alert("Fill All Details")
+             }else{
+                var signup = {
+                            "name": name,
+                            "number": number,
+                            "email": email,
+                            "NoOfTickets": NoOfTickets,
+                            "TrainName": trainName,
+                    }
+               BookTicket.push(signup);
+                localStorage.setItem("BookTicket",JSON.stringify(BookTicket))
+               alert("Your Ticket Successfully Booked")
+            }
+          
+        }
+       
+    </script>
 </html>
