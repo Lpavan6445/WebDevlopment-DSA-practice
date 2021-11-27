@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.cdnfonts.com/css/sicret-mono-personal" rel="stylesheet">
+    <title>TrainSeatAvailabiltyChecker</title>
+    <style>
+        body{
+            font-family: sans-serif;
+            width: 36%;
+            margin: 20px auto;
+            text-align: center;
+            background-image:url("Grade\ Grey.jpg");
+        }
+        .myButton {
+            background-image: linear-gradient(to top, #cc208e 0%, #6713d2 100%);
+            border-radius:28px;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:16px;
+            padding:16px 31px;
+            text-decoration:none;
+
+        }
+        .myButton:hover {
+            background-image: linear-gradient(to top, #fd01a1 0%, #6f00ff 100%);
+        }
+        .myButton:active {
+            position:relative;
+            top:1px;
+        }
+    /* <---------------Border----------------------> */
+        table {
+            /* border-collapse: collapse; */
+            border-radius: 10px !important;
+            border-style: hidden; /* hide standard table (collapsed) border */
+            box-shadow: 0 0 0 1px #fb2e00; /* this draws the table border  */ 
+            margin: 20px;
+        }
+        td {
+            border: 1px solid #ff0637 !important;
+        
+        }
+        table tr:first-child th:first-child {
+            border-top-left-radius: 10px;
+        }
+        table tr:last-child td:first-child {
+            border-top-right-radius: 10px;
+        }
+        table tr:last-child td:last-child {
+            border-bottom-right-radius: 10px;
+        }
+        table tr:last-child th:first-child {
+            border-bottom-left-radius: 10px;
+        }
+        th {
+            border: 1px solid #fd0033 !important;
+            background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);
+        }
+        th, td {
+        padding: 1em;
+        border-bottom: 2px solid white; 
+        }
+        .th-right {
+            /* width: 20%; */
+            text-align: right;
+            font-weight: 700;
+            color: #fff;
+           
+        }
+        .content {
+            width:200px; 
+            font-size: 24px;   
+            /* color: #adadad; */
+            padding-left: 25px;
+        }
+        #heading > h1{
+            background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);
+            margin: 0px;
+            padding: 20px 0px;
+            margin-bottom: 20px;
+            color: white;
+        }
+/* <-----------------------Book ticket button -------------------------------> */
+        .button-27 {
+            width: 200px;
+        background-color: #000000;
+        border: 2px solid #1A1A1A;
+        border-radius: 15px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 16px;
+        font-weight: 600;
+        margin: auto;
+        padding: 16px 14px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+        touch-action: manipulation;
+        }
+        .button-27:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div id="heading"><h1>Train Seat Availability Checker</h1></div>
+    
+    <button id="check" class="myButton" onclick="check()">Check Availability</button>
+    <div id="liveCount">
+        
+    </div>
+
+         <h1 id="trainAvail"></h1>
+     <div id="bookingbtn">
+
+     </div>
+</body>
+<script>
+      let Btg = ["gandhi","elon","pavan","tata","ajay","yogesh","rakesh","Suraj"]
+      let Mtg = ["gandhi","elon","pavan","tata","ajay","yogesh","rakesh","Suraj"]
+      let Ptg = ["gandhi","elon","pavan","tata","ajay","yogesh","rakesh","Suraj"]
+
+      var trainAvail = document.getElementById('trainAvail')
+      var count = document.getElementById("liveCount")
+      var bookingbtn = document.getElementById("bookingbtn")
+
+function check(){
+      async function checkAvailability() {
+        let mypromise = new Promise(function(resolve,reject){
+            var set = setInterval(function(){               
+                   count.innerHTML = `<table class="data">
+                                        <tr>
+                                            <th class="th-right">Btg-passengers:</th>
+                                            <td class="content">${Btg.length}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th-right">Mtg-passengers:</th>
+                                            <td class="content">${Mtg.length}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th-right">Ptg-passengers:</th>
+                                            <td class="content">${Ptg.length}</td>
+                                        </tr>
+                                    </table>`
+                  if(Btg.length <= 3){
+                      resolve("Btg seat are Available")
+                      clearInterval(interval)
+                      clearInterval(set)
+                      trainAvail.textContent = "🌟 Btg Train Is Available 🌟"
+                      bookingbtn.innerHTML = `<a href="Booking.html"><button class="button-27" role="button">Book Ticket</button></a>`
+                  }
+                  else if(Mtg.length <= 3){
+                      resolve("Mtg seat are Available")
+                      clearInterval(interval)
+                      clearInterval(set)
+                      trainAvail.textContent = "🌟 Mtg Train Is Available 🌟"
+                      bookingbtn.innerHTML = `<a href="Booking.html"><button class="button-27" role="button">Book Ticket</button></a>`   
+                  }
+                  else if(Ptg.length <= 3){
+                      resolve("Ptg seat are Available")
+                      clearInterval(interval)
+                      clearInterval(set)
+                      trainAvail.textContent = "🌟 Ptg Train Is Available 🌟"
+                      bookingbtn.innerHTML = `<a href="Booking.html"><button class="button-27" role="button">Book Ticket</button></a>`
+                  }
+                  
+            },1000)
+        })
+        let result = await mypromise;
+        console.log(result)
+      }
+      function cancelTicket(){
+          let CS1 = Math.floor(Math.random()*5)
+          let CS2 = Math.floor(Math.random()*5)
+          let CS3 = Math.floor(Math.random()*5)
+        //    console.log(CS1,CS2,CS3)
+          setTimeout(function() {
+              Btg.pop();
+          },CS1*1000);
+
+          setTimeout(function() {
+              Mtg.pop();
+          },CS2*1000);
+
+          setTimeout(function() {
+              Ptg.pop();
+          },CS3*1000);
+          console.log(Btg,Mtg,Ptg)
+      }
+     let interval = setInterval(cancelTicket,1000)
+     checkAvailability()
+}
+</script>
+</html>
