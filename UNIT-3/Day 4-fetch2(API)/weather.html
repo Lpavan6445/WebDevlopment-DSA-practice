@@ -14,7 +14,7 @@
       #container {
         /* background-color: #f5f5f5; */
         background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-        background-repeat: no-repeat;
+        background-repeat: n-repeat;
         height: 120vh;
       }
       #head{
@@ -86,7 +86,12 @@
         border-radius: 20px;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
         background-color: rgb(255 255 255 / 70%);
-        /* height: 400px; */
+        /* height: 400px; */ 
+           grid-area: "mdleft";
+           width: 97%;
+           /* height: 230px; */
+           padding-top: 20px;
+           padding-right: 10px;
      } 
      #todayIcon{
         display: inline-block;
@@ -97,7 +102,7 @@
      #todayTemp{
         display: inline-block;
         margin-top: 20px;
-        font-size: 95px;
+        font-size: 90px;
         font-weight: bold;
         /* vertical-align: center; */
         color:rgb(0, 0, 0);
@@ -167,12 +172,7 @@
             /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
             padding: 20px;
         }
-        #middleLeft{ 
-           grid-area: "mdleft";
-           width: 95%;
-           height: 230px;
-           padding-top: 20px;
-        }
+       
         .btncontainer{
              grid-area:"search"
         }
@@ -246,7 +246,7 @@
         <div class="btncontainer">
               <div class="col-md-8">
                   <div class="search"> 
-                     <input value="Hyderabad" id="city" type="text" class="form-control" placeholder="Enter City Name" > 
+                     <input id="city" type="text" class="form-control" placeholder="Enter City Name" > 
                      <button id="search"  onclick="getWeather()" class="btn btn-primary">Search</button>
                   </div>
               </div>
