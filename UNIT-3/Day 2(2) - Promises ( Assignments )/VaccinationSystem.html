@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1>Vaccination System</h1>
+
+  Name:<input type="text" id="name">
+
+  <button onclick="register()">Register</button>
+  <h1 id="vacCount"></h1>
+
+</body>
+<script>
+    let queue = ["pavan","ganesh","rakesh","sunil"]
+   function register() {
+       let name = document.getElementById("name").value;
+
+       let message = `${name} your registration is successful. please wait for your turn`;
+       alert(message);
+
+       queue.push(name)
+     
+       let mypromise = new Promise(function(resolve, reject) {
+          
+         setInterval(function() {
+            if(queue[0] === name) {
+               resolve(`${name} Your Turn Now`)
+            }
+         },1000)  
+       })
+       mypromise.then(function(res){
+           alert(res)
+       })
+    }
+
+    function startVaccination(){
+      queue.shift()
+      console.log("queue",queue)
+       var vacCount = document.getElementById("vacCount")
+       vacCount.textContent = `Available Vaccinations: ${queue.length}`
+       if(queue.length === 0){
+           clearInterval(id);
+           alert("vaccine out of stock")
+       }
+    }
+    let id = setInterval(startVaccination,3000)
+
+
+</script>
+</html>
