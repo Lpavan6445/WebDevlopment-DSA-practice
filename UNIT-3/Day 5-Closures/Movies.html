@@ -8,44 +8,59 @@
 
     <title>Document</title>
     <style>
-        /* <-----------Search---------------> */
-        body {
-            background-color: #eee;
+         body {
+            /* background-color: #eee; */
+            background-image: linear-gradient(to bottom, #141b29, #0c111b 300px);
             font-family: "Poppins", sans-serif;
-            font-weight: 300
+            font-weight: 300;
         }
+        /* <---------------------------> */
+        #header{
+            display:flex;
+            /* flex-flow: row wrap; */
+            justify-content: space-evenly;
+            border-bottom: 3px solid white;
+            
+        }
+        /* <-----------Search---------------> */
         .container{
-            width: 600px;
-            margin-top: 20px;
+            width: 400px;
+            margin-top: 23px;
+            /* justify-content: right; */
+            margin-left: 23px;
+            margin-right: 0px;
         }
         .search {
             position: relative;
+           
             box-shadow: 0 0 40px rgba(51, 51, 51, .1)
         }
         .search input {
-            height: 60px;
+            width: 350px;
+            height: 40px;
             text-indent: 10px;
-            border: 2px solid #d6d4d4
+            border: 2px solid #d6d4d462;
+            background-color: #0c111b8e;
         }
-
+        
         .search input:focus {
             box-shadow: none;
-            border: 2px solid blue
+            border: 2px solid rgba(0, 0, 255, 0.609);
         }
 
         .search .fa-search {
             position: absolute;
-            top: 20px;
-            left: 16px
+            top: 10px;
+            left: 0px;
         }
 
         .search button {
             position: absolute;
-            top: 5px;
-            right: 5px;
-            height: 50px;
-            width: 110px;
-            background: blue
+            top: 2.5px;
+            right: -96px;
+            height: 34px;
+            width: 100px;
+            background: #0a58ca; 
         }
         /* <---------------------------------------> */
         #wall{
@@ -60,6 +75,7 @@
             height: 370px;
             border-radius:20px;
             margin: 10px;
+            background-color: whitesmoke;
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
         #poster{
@@ -71,6 +87,7 @@
         #txtDiv{
             padding-top: 20px;
             padding-left: 15px;
+           
         }
         .txt{
             font-size: 18px;
@@ -83,28 +100,89 @@
         }
         h1{
             text-align: center;
-        } */
+        }
+/* <--------------------Slider--------------------->  */
+        .d-flex{
+            display: flex;
+            position:relative;
+            flex-direction: column;
+        }
+        #slider{
+            display:none;
+            position: absolute;
+            z-index: 10;
+            top:40px;
+            width: 350px;
+            height: 300px;
+            /* border:1px solid black; */
+            background-image: linear-gradient(to bottom, #141b29, #0c111b 300px);
+            border-bottom: 1px solid grey;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            overflow:scroll;
+            padding:10px;
+        }
+        #slider::-webkit-scrollbar {
+            display: none;
+        }
+        #slider > div {
+            height: 100px;
+            width: 100%;
+            margin-bottom: 10px;
+            background-color: #141b29;
+            border-radius:10px;
+        }
+        #slider > div>#sliderImg{
+            width:50%;
+            height: 100px;
+            border-radius:10px;
+        }
+        #slider > div>#sliderTxt{
+            /* width:50%; */
+            /* height: 100px; */
+            color:white;
+            font-size: 14px;
+            margin-top:10px;
+            padding-left: 10px;
+            vertical-align:top;
+        }
+/* <---------------------------------------> */
     </style>
 </head>
 <body>
-    <h1>😉Search For Movies</h1>
-    <div class="container">
-        <div class="row height d-flex justify-content-center align-items-center">
-            <div class="col-md-8">
-                <div class="search"> <i class="fa fa-search"></i> <input id="mvname" type="text" class="form-control" placeholder="Enter Movie Name"> 
-                <button id="search" onclick="search()" class="btn btn-primary">Search</button> </div>
+    <div id="header" >
+        <div>
+            <h1 style="padding-top: 20px; color:whitesmoke; margin-left: 330px;">😉Search For Movies</h1>
+        </div>
+        <div class="container" >
+            <div class="d-flex " >
+                <div class="col-md-8">
+                    <div class="search" >
+                        <input oninput="debounce(slidering,1000)"  id="mvname" type="text" class="form-control" placeholder="Search"> 
+                        <button id="search" onclick="search()" class="btn btn-primary">Submit</button> 
+                    </div>
+                </div>
+                <div id="slider">
+            
+                </div>
             </div>
         </div>
-   </div>
-    <div id="wall">
+    </div>
+    <div>
+        <a href="tending.html"><button style="color: black; margin-left:50px; margin-top:10px;">Trending</button></a>
+    </div>
+    <div id="wall" onclick="deleteSlider()">
 
     </div>
 </body>
 <script>
-//    function search() {
-        var key ="28c69169c6de26fc79486ad5bed15b9d"
-        var input = document.getElementById("mvname").value
-        let url = `https://api.themoviedb.org/3/search/multi?api_key=${key}&language=en-US&query=Avengers&page=1`
+     var bomb;
+   function search() {
+    var key ="28c69169c6de26fc79486ad5bed15b9d"
+     var input = document.getElementById("mvname").value
+        var slider = document.getElementById("slider") 
+        slider.style.display = "block"
+        let url = `https://api.themoviedb.org/3/search/multi?api_key=${key}&language=en-US&query=${input}&page=1`
         let wall = document.getElementById("wall")
         
         fetch(url)
@@ -112,55 +190,117 @@
             return response.json()
         })
         .then(function(res) {
-            const data = res
-            if(res.Response == "False"){
-                wall.textContent ="Enter Correct Movie Name"
-                wall.style.color = "red"
-                console.log(data)
-            }else{
-                wall.style.color = "Black"
-                console.log(data)
-                appendMovies(data.results)
-            }
+           const data = res
+            wall.style.color = "Black"
+            // console.log(data)
+            appendMovies(data.results)
+            // slidering(data.results)
             console.log(res)
         }) 
+    }
+    function slidering(products){
+        var key ="28c69169c6de26fc79486ad5bed15b9d"
+        var input = document.getElementById("mvname").value
+        var slider = document.getElementById("slider") 
+        slider.style.display = "block"
+        let url = `https://api.themoviedb.org/3/search/multi?api_key=${key}&language=en-US&query=${input}&page=1`
+        let wall = document.getElementById("wall")
+        
+        fetch(url)
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function(res) {
+           const data = res
+            wall.style.color = "Black"
+            // console.log(data)
+            // appendMovies(data.results)
+            sliderDisplay(data.results)
+            console.log(res)
+        }) 
+    }
+    function sliderDisplay(products){
+            var sliderDiv = document.getElementById("slider")
+                sliderDiv.innerHTML = ""
+            localStorage.setItem("MoviesDAta",JSON.stringify(products))
+            products.forEach(function(product,index){
 
-        function appendMovies(Movies){
-            wall.textContent = ""
-            Movies.forEach(function(product){
-                
-                let main = document.createElement('div');
-                    main.id="maindiv"
-                    main.addEventListener("mouseover",function(){
-                       main.transform = "scale(2, 0.5)"
-                    })
-                    let img = document.createElement('img');
-                     img.id="poster"
-                    var poster = product.poster_path
+              var subDiv = document.createElement("div")
+               
+                var img = document.createElement("img")
+                img.addEventListener("click",function(){
+                    localStorage.setItem("SingleMovie",JSON.stringify(product))
+                    window.location.href="singleMovie.html"
+                })
+                        img.id="sliderImg"
+                    img.style.display="inline-block"
+                var poster = product.backdrop_path
                     img.src = `https://image.tmdb.org/t/p/w500/${poster}`
-                
-                let textDiv = document.createElement('div')
-                    textDiv.id ="txtDiv"
+                    
                     let title = document.createElement('h4')
                     title.innerHTML = product.title
-                    title.setAttribute('class',"txt")
-                
-                    let date = document.createElement('p')
-                    date.textContent = product.release_date
-                    date.setAttribute('class',"txt")
-            
-                    let rating = document.createElement('p')
-                     rating.id = "rating"
-                    rating.textContent =  "🌟"+product.vote_average
-                    rating.setAttribute('class',"txt")
-                
-                textDiv.append(title,date,rating)
-                main.append(img,textDiv)
-                wall.append(main)
-            })
-        }
+                    title.id ="sliderTxt"
+                    title.style.display ="inline-block"
+                    subDiv.append(img,title)
+                sliderDiv.append(subDiv)
+             })
+    }
+    // function addToProduct(p,id){
+    //     console.log(p,id)
+    //     localStorage.setItem("SingleMovie",JSON.locindex);
+    //         //  console.log("testing")
     // }
+    function deleteSlider(){
+        var sliderDiv = document.getElementById("slider")
+        sliderDiv.innerHTML = ""
+        slider.style.display = "none"
+    }
 
+    function appendMovies(Movies){
+        wall.textContent = ""
+        Movies.forEach(function(product){
+            
+            let main = document.createElement('div');
+                main.id="maindiv"
+
+                let img = document.createElement('img');
+                    img.id="poster"
+                var poster = product.poster_path
+                img.src = `https://image.tmdb.org/t/p/w500/${poster}`
+                img.addEventListener("click",function(){
+                    localStorage.setItem("SingleMovie",JSON.stringify(product))
+                    window.location.href="singleMovie.html"
+                })
+            
+            let textDiv = document.createElement('div')
+                textDiv.id ="txtDiv"
+                let title = document.createElement('h4')
+                title.innerHTML = product.title
+                title.setAttribute('class',"txt")
+            
+                let date = document.createElement('p')
+                date.textContent = product.release_date
+                date.setAttribute('class',"txt")
+        
+                let rating = document.createElement('p')
+                    rating.id = "rating"
+                rating.textContent =  "🌟"+product.vote_average
+                rating.setAttribute('class',"txt")
+            
+            textDiv.append(title,date,rating)
+            main.append(img,textDiv)
+            wall.append(main)
+        })
+    }
+    
+    function debounce(fun,delay) {
+        clearTimeout(bomb)  
+        
+        bomb =setTimeout(function(){
+           fun()
+        },1000)
+    
+    }
     
 
     
