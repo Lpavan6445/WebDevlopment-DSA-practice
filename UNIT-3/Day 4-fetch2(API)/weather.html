@@ -375,9 +375,9 @@
     var i=0;
     // <---------------------Middle left------------------->
     var todayIcon = document.getElementById("todayIcon")
-    todayIcon.setAttribute("src",`http://openweathermap.org/img/wn/${forecast[0].weather[0].icon}@2x.png`)
+      todayIcon.setAttribute("src",`http://openweathermap.org/img/wn/${forecast[0].weather[0].icon}@2x.png`)
     var todayTemp = document.getElementById("todayTemp")
-    todayTemp.innerHTML = `${Math.floor(forecast[0].main.temp)}°C`
+      todayTemp.innerHTML = `${Math.floor(forecast[0].main.temp)}°C`
     // <---------------------Middle Right---------------------->
     var sunrise = document.getElementById("sunrise")
     var sunr =new Date(data.city.sunrise*1000)
