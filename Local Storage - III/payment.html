@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .paymentpage{
+               width: 200px;
+        }
+        input{
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="paymentpage">
+        <label for="">Name</label>
+        <input id="name" type="text" placeholder="Name">
+        <label>Card Number</label>
+        <input id="cardno" type="number" placeholder="Card Number">
+        <label for="">Expiry date</label>
+        <input id="expiry" type="text" placeholder="mm/yyyy">
+        <label for="">CVV</label>
+        <input id="cvv" type="number" placeholder="xxx">
+        <button id="submit">Submit</button>
+    </div>
+</body>
+ <script>
+  var btn=document.getElementById("submit")
+  btn.addEventListener("click",function(el){
+      el.preventDefault();
+    var name=document.getElementById("name")
+    var cardno=document.getElementById("cardno")
+    var expiry=document.getElementById("expiry")
+    var cvv=document.getElementById("cvv")
+
+    var data={
+        name:name.value,
+        cardno:cardno.value,
+        expiry:expiry.value,
+        cvv:cvv.value
+     }
+      if (checkdetails(data)){
+          window.location.href = otp.html
+      }else{
+          alert("enter correct card details")
+      }
+   })
+  function checkdetails(data) {
+    var localcard = JSON.parse(localStorage.getItem("carddetails"))
+     for(var key in localcard){
+         if(data[key] == undefined){
+             return false
+         }else if(localcard[key] !== data[key]){
+             return false
+         }
+     }
+     return true
+  }
+
+ </script>
+  
+
+</html>
