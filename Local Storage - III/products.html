@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{
+            margin: auto;
+            width: 1150px;
+        }
+        #container{
+             display: flex;
+             flex-flow: row wrap;
+        }
+        #container > div{
+            width: 260px;
+            height: 350px;
+            margin: 25px 10px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;       
+        }
+        img{
+          width: 100%;
+          height: 66%
+        }
+        #tex{
+          margin-left: 10px;
+          font-weight: bold;
+          line-height: 10px;
+        }
+        .btn{
+          width: 100%;
+          color: whitesmoke;
+          background-color: green;
+          padding: 6px 0px;
+          text-align: center;
+           
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Page</h1>
+
+     <div id="container">
+         
+     </div>
+
+</body>
+ <script>
+     var product = JSON.parse(localStorage.getItem("products"));
+     console.log("product:", product);
+     var contnr=document.getElementById("container")
+     
+     product.map(function(el,index){
+         
+        var div1=document.createElement("div")
+          div1.setAttribute('class', 'box');
+
+        var imag=document.createElement("img");
+          imag.setAttribute("src",el.image_url)
+
+        var name=document.createElement("h3")
+          name.textContent=el.name
+        
+        var pric=document.createElement("p")
+          pric.textContent=el.price
+
+        var type=document.createElement("p")
+          type.textContent=el.type
+
+        var adtoCart=document.createElement("button")
+        adtoCart.setAttribute("class","btn")
+        adtoCart.textContent="Add To Cart"
+        adtoCart.addEventListener("click",function(){
+          cartItem(el)
+        })
+
+        var sdiv=document.createElement("div")
+        sdiv.setAttribute("id","tex")
+        
+        sdiv.append(name,pric,type)
+
+        div1.append(imag,sdiv,adtoCart)
+
+        contnr.append(div1) 
+
+     })
+     var cart = JSON.parse(localStorage.getItem("cartItems")) || []
+     function cartItem(el){
+            if(el.bool == false){
+              el.bool = true
+              cart.push(el)
+              localStorage.setItem("cartItems",JSON.stringify(cart))
+            }else{
+              alert("This Product Already added to Cart")
+            }
+      }
+
+ </script>
+
+</html>
