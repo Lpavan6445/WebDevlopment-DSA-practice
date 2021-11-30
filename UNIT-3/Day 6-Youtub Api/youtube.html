@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOUTUBE</title>
+    <style>
+       body{
+           margin:0px;
+
+       }
+      #navbar{
+          display:flex;
+          height: 56px;
+          justify-content: space-between;
+          border: 1px solid black;
+      } 
+      #navbar > div{
+        border: 1px solid black;
+        
+      }
+      .fa-bars{
+        font-size:30px;
+        padding:10px;
+      }
+      .fa-youtube{
+          font-size:35px;
+          width: 60px;
+          padding-left: 10px;
+      }
+      #search{
+          width: 50%;
+          height: 40px;
+          padding:0px;
+          margin: 5px;
+          /* background-color: ; */
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+            box-shadow: inset 0 1px 2px hsl(0deg 0% 0% / 0%);
+             /* border: 1px solid hsl(0deg 0% 16%); */
+      }
+      #searchInput{
+        width: 80%;
+        height: 40px;
+        padding-left: 10px;
+        font-size: 18px;
+      }
+      .fa-search{
+        border-radius: 0 2px 2px 0;
+        cursor: pointer;
+        color:#989898;
+        align-items: center;
+        padding: 10px 20px;
+       
+        font-size:20px;
+        background-color:whitesmoke;
+        border:1px solid gray;
+        /* height: 40px;
+        width: 64px; */
+      }
+
+
+      #searchResults{
+          display: grid;
+          width: 100%; 
+          grid-template-columns: repeat(4,20%);
+          grid-gap:10px;
+          justify-content:space-between;
+          margin-top: 5%;
+      }
+      .subdiv{
+        border: 1px solid black;
+      }
+      .subdiv > div {
+        width: 100%;
+      }
+      .title{
+        /* border: 1px solid red; */
+        /* width: 100%; */
+        height: 40px;
+        overflow: hidden;
+      }
+      .subdiv{
+        border: 1px solid black;
+      }
+    </style>
+</head>
+<body>
+    <!------------NAVBAR------------------------->
+  <div id="navbar">
+      <div><i class="fas fa-bars"></i><i class="fab fa-youtube" src="https://www.youtube.com/"></i></div>
+      <div id="search">
+          <input id="searchInput" type="text" placeholder="Search">
+          <i class="fas fa-search" onclick="searchVideos()"></i>
+      </div>
+     <div></div> 
+  </div>
+  <div id="searchResults">
+
+  </div>
+</body>
+<script>
+    let key = "AIzaSyDOPvDSD8yJC-bNZQ8Lh7DXcukXm2buioI"
+   async function searchVideos(){
+      try{
+           let search = document.getElementById("searchInput").value;
+           let url =  `https://youtube.googleapis.com/youtube/v3/search?q=${search}&key=${key}&type=video&maxResults=20&part=snippet` 
+
+           let response = await fetch(url)
+           let data = await response.json()
+           console.log(data.items)
+           let array_of_videos = data.items;
+           appendVideos(array_of_videos)
+      }
+      catch (err) {
+          console.log(err)
+      }
+      
+   } 
+
+   function appendVideos(arr){
+    let searchResultsdiv = document.getElementById("searchResults")
+     
+     arr.forEach( (el)=>{
+         console.log("videoId: "+ el.snippet.thumbnails.default.url)
+         let div = document.createElement("div")
+            div.setAttribute("class","subdiv")
+           div.addEventListener("click",function(){
+            var arr=[] 
+            arr.push(el)
+             localStorage.setItem("openedVideo",JSON.stringify(el))
+             window.location.href="playVideo.html"
+           })
+        //  div.class="singleVideo"
+          var imgDiv = document.createElement("div")
+           let iframe = document.createElement("img")
+           iframe.src = `${el.snippet.thumbnails.medium.url}`
+           iframe.width ="300"
+           iframe.height ="190" 
+           iframe.setAttribute("allowfullscreen",true)
+           
+           var txtDiv = document.createElement("div")
+           txtDiv.setAttribute("class","title")
+              var title = document.createElement("p")
+                 title.innerHTML = el.snippet.description
+                console.log(el.snippet.description)
+            imgDiv.append(iframe)
+            txtDiv.append(title)
+              div.append(imgDiv,txtDiv)
+          // div.append(iframe)
+         searchResultsdiv.append(div)
+      
+      })
+   }
+
+
+
+
+
+</script>
+<script src="https://kit.fontawesome.com/7ad00768f9.js" crossorigin="anonymous"></script>
+</html>
