@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./navbarStyle.css">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&family=M+PLUS+1+Code:wght@600&family=Roboto:wght@100&family=Source+Code+Pro&display=swap');
+        </style>
+    <style>
+       #container{
+           width:70%;
+           height: 531px;
+           margin:30px auto;
+           border-radius: 10px;
+           background: url(https://greenonion.in/images/inner_content_bg.png) no-repeat top;
+       }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+
+    </div>
+    <div id="container">
+
+    </div>
+</body>
+<script type="module">
+     import {navbar} from "./navbar.js"
+     var nav = document.getElementById("navbar")
+     nav.innerHTML = navbar() 
+     console.log(navbar())
+     products()
+     async function products(){
+         var res = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=Chicken")
+         var data = await res.json()
+         console.log(data.meals)
+         display(data.meals) 
+     }
+     
+     function display(products){
+         products.forEach(({strMealThumb,strMeal,strYoutube})=>{
+
+            
+         })
+     }
+
+</script>
+</html>
