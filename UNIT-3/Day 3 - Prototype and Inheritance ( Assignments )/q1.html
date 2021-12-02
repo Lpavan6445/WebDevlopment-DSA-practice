@@ -10,16 +10,17 @@
     
 </body>
   <script>
-       function GrandFather(){
+       function GrandFather(name){
+           this.name=name;
            this.skinColor="white";
            this.SugarIssue="noSugar"
        }
-       var grandFather = new GrandFather()
+    //    var grandFather = new GrandFather()
 
-       var father= Object.create(grandFather)
+       var father= new GrandFather("sathyam")
+       console.log(father)
 
-       father.name = "****"
-        
-      console.log(father)
+       var son = new GrandFather("pavan")
+       console.log(son)
   </script>
 </html>
