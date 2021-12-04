@@ -1,0 +1,134 @@
+#container{
+    width:90%;
+    display: flex;
+    padding: 15px;
+    flex-flow: row wrap;
+    justify-content: center;
+    /* height: 531px; */
+    margin:30px auto;
+    border-radius: 10px;
+    /* background: url(https://greenonion.in/images/inner_content_bg.png) no-repeat top; */
+}
+#container > #subdiv{
+    width: 43%;
+    height: 220px;
+    /* display: inline-block; */
+    border-radius: 10px; 
+    margin: 20px;
+    cursor: pointer;
+    background: url(https://greenonion.in/images/inner_content_bg.png) no-repeat top;
+}
+#container > #subdiv:hover{
+ /* box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px; */
+ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+#txtDiv{
+    position: relative;
+ display: inline-block;
+ /* vertical-align: middle; */
+  width: 50%;
+  height: 100%;
+  vertical-align: top;
+  /* position: relative; */
+}
+#txtDiv>p{
+    text-align: center;
+     vertical-align: center;
+     font-size: 30px;
+     color:white;
+     border-bottom-right-radius: 10px;
+     border-top-right-radius: 10px;
+}
+#imgDiv{
+ display: inline-block;
+ width: 50%;
+ vertical-align: top;
+}
+img{
+    width: 100%;
+    height: 219px;
+    border-bottom-right-radius: 10px;
+     border-top-right-radius: 10px;
+}
+.fa-youtube{
+    position:absolute;
+    font-size: 40px;
+    left:40%;
+    bottom: 8px;
+  color: rgb(255, 255, 255);
+  margin: auto;
+  text-align: center;
+}
+.clickDiv{
+    display:none;
+    position:absolute;
+    top: 0px;
+    /* left: */
+    width: 100%;
+    height: 100%;
+    background-color:rgba(255, 0, 0, 0.548);
+}
+#subDiv{
+    position:absolute;
+    width:70%;
+    height:500px;
+    margin-top: 20px;
+    margin-left: 180px;
+    /* margin-left:35%; */
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content:space-between;
+    background: url(https://greenonion.in/images/inner_content_bg.png) no-repeat top;
+    border-radius: 10px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+#clickTxtDiv{
+    /* position:absolute; */
+    width: 50%;
+    padding: 25px;
+   
+}
+#clickTxtDiv>p{
+    font-size:32px;
+    color: aliceblue;
+    margin-left: 20px;
+} 
+#clickImgDiv{
+    /* position:absolute; */
+    width: 50%;
+}
+#clickTxtDiv>.fa-youtube{
+    font-size:40px;
+     left: 25%;
+     bottom:20px;
+     cursor: pointer;
+}
+#clickImgDiv > img{  
+    width: 100%;
+    height: 100%;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.clickDiv > i{
+    margin-top:10px;
+    margin-left: 50%;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+#Ingredients>h4{
+    color: rgba(255, 255, 255, 0.815);
+}
+#Ingredients>p{
+    margin-top: 0px;
+}
+#Ingredients{
+    color:rgba(255, 255, 255, 0.692);
+    font-size: 20px;
+    margin-left: 20px;
+    line-height:25px;
+    font-weight: lighter;
+    overflow: hidden;
+    height: 300px;
+}
