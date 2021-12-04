@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./navbar.css">
+    <title>index</title>
+  </head>
+
+  <style>
+
+  </style>
+<body>
+    <div id="header">
+
+     </div>
+     <button id="repobtn">Get Repository</button>
+</body>
+<script type="module">
+     import {navbar} from "./navbar.js"
+     import {getData} from "./getdata.js"
+
+     let response;
+     var head = document.getElementById("header")
+        head.innerHTML =navbar()
+
+      let search_box = document.getElementById("search-input")
+       search_box.addEventListener("keypress",makeAPICall)
+
+       async function makeAPICall(e){
+         if(e.key === "Enter"){
+          let user = search_box.value
+            response = await getData(user)
+            console.log(response)
+           let img = document.getElementById("profile-img")
+            img.src = response.avatar_url
+          }
+      }
+      let btn = document.getElementById("repobtn")
+         btn.addEventListener("click",getUserRepos)
+      async function getUserRepos(){
+        let res = await fetch(response.repos_url)
+        let data = await res.json()
+        console.log(data)
+
+      }
+</script>
+</html>
