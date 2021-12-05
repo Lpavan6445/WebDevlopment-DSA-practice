@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./navbarStyle.css">
+    <link rel="stylesheet" href="./products.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <div id="wall">
+
+    </div>
+
+</body>
+<script type="module">
+
+    import navbar from "/UNIT-3/Import&Export/navbar.js"
+    let container = document.getElementById("container") 
+    container.innerHTML = navbar()
+    console.log(navbar())
+
+    import {getData,appendData} from "./showdata.js";
+    var key ="28c69169c6de26fc79486ad5bed15b9d"
+    let url = `https://fakestoreapi.com/products/category/jewelery?limit=20`
+
+    var wall = document.getElementById("wall")
+    getData(url).then(function(res){
+        console.log(res)
+        appendData(res,wall)
+    
+    })
+    
+     
+</script>
+</html>
