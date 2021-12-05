@@ -1,0 +1,14 @@
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    border-bottom:1px solid black;
+}
+#options{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
