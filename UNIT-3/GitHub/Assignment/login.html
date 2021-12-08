@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* <------------------Login---------------------> */
+        #login{
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1.5px solid  black;
+        }
+        #login >input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        #login>button{
+            width: 98%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+     <!-- <------------LogIn-------------->
+     <div><h1 style="text-align: center">Login</h1></div>
+
+     <div id="login">
+        <input type="text" id="username" placeholder="Username"/>
+        <input type="text" id="password" placeholder="Password"/>
+        <button onclick="Register()" id="btn" >Submit</button>
+        <p id="signuplink" style="color:blue; cursor:pointer;">create a new account</p>
+    </div>
+  
+</body>
+<script>
+    async function Register(){
+        let login_data={
+            username:document.getElementById("username").value,
+            password:document.getElementById("password").value
+        }
+        login_data = JSON.stringify(login_data)
+        var url = "https://masai-api-mocker.herokuapp.com/auth/login"
+        
+        var loginresponse = await fetch(url,{
+            method:"POST",
+            body:login_data,
+
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        var data = await loginresponse.json()
+       console.log(data)
+       if(data.error == false){
+            alert(`Login Successful`);
+            localStorage.setItem("logintokken","true");
+            window.location.href ="youtube.html"
+        }else{
+            alert(``);
+        }
+       let username = document.getElementById("username").value
+       getProfile(username, data.token);
+    }
+ 
+    async function getProfile(username, token) {
+       let api =`https://masai-api-mocker.herokuapp.com/user/${username}`
+       var response = await fetch(api,{
+
+          headers: {
+              "Content-Type": "application/json",
+               Authorization: `Bearer ${token}`,
+          },
+       });
+
+       let data = await response.json();
+       console.log("data", data);
+    }
+    var signuplink = document.getElementById("signuplink")
+     signuplink.addEventListener("click",()=>{
+         window.location.href = "signup.html"
+     })
+
+</script>
+</html>
