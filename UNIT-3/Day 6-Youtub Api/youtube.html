@@ -188,10 +188,8 @@
       catch (err) {
           console.log(err)
       }
-      
    } 
-
-   function appendVideos(arr){
+  function appendVideos(arr){
     let searchResultsdiv = document.getElementById("searchResults")
     searchResultsdiv.innerHTML = ""
      arr.forEach( ({id:{videoId},snippet:{channelId,channelTitle,title,thumbnails:{high:{url}}}})=>{
@@ -217,7 +215,7 @@
             img.style.paddingLeft= "0"
            img.src = `${url}`
           //  iframe.width ="300"
-           img.height ="190" 
+           img.height ="70" 
            img.setAttribute("allowfullscreen",true)
            
            var txtDiv = document.createElement("div")
