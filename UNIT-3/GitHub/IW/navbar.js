@@ -22,13 +22,17 @@ function navbar(){
   </div>
 
   <div id="profile">
-    <img
+      <img
       id="profile-img"
       src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.fRjYMjw7_Ymj8eNXiP5JNAHaEK%26pid%3DApi&f=1"
       alt=""
       srcset=""
     />
   </div>
+  <h1 id="loginbtn" style="font-size:18px;cursor:pointer;color:blue; border: 2px solid blue;padding:2px 8px;">Login</h1>
+  <h1 id="signupbtn" style="font-size:18px;cursor:pointer;color:blue; border: 2px solid blue;padding:2px 8px; margin-left:10px">Signup</h1>
+
+  
 </div>`
 }
 
