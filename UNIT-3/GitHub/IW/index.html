@@ -16,6 +16,10 @@
 
      </div>
      <button id="repobtn">Get Repository</button>
+      <div id="reposits">
+
+      </div>
+     <!-- <div>< -->
 </body>
 <script type="module">
      import {navbar} from "./navbar.js"
@@ -37,13 +41,26 @@
             img.src = response.avatar_url
           }
       }
-      let btn = document.getElementById("repobtn")
-         btn.addEventListener("click",getUserRepos)
+      let repobtn = document.getElementById("repobtn")
+         repobtn.addEventListener("click",getUserRepos)
       async function getUserRepos(){
         let res = await fetch(response.repos_url)
         let data = await res.json()
         console.log(data)
+        let reposits = document.getElementById("reposits")
+        for(var i=0; i<data.length; i++){
+          console.log(data.full_name)
+          // var repName  = document.createElement("data.")
+        }
 
       }
+      var loginbtn = document.getElementById("loginbtn")
+       loginbtn.addEventListener("click",()=>{
+        window.location.href ="login.html"
+      })
+      var signupbtn = document.getElementById("signupbtn")
+       signupbtn.addEventListener("click",()=>{
+        window.location.href ="signup.html"
+      })
 </script>
 </html>
