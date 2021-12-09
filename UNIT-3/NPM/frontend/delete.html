@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>   
+        <h1>Delete Product</h1>
+        
+        <input type="text" id="delete_id" placeholder="Enter id to Delete" />
+  
+        <button onclick="deleteProduct()">Delete Product</button>
+      </div>
+</body>
+<script>
+     async function deleteProduct(){
+           const id = document.getElementById("delete_id").value
+       let response = await fetch(`http://127.0.0.1:5000/api/products/${id}`,{
+           method:"DELETE",
+           headers:{
+               "Content-Type":"application/json"
+           },
+       });
+       let d = await response.json();
+       console.log(d);
+     }
+</script>
+</html>
