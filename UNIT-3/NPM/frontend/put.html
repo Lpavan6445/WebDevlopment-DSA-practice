@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUT</title>
+    <style>
+        div {
+          width: 13%;
+        }
+        input,
+        button {
+          margin-top: 10px;
+        }
+      </style>
+</head>
+
+<body>
+    <div>
+        <h1>Put Product</h1>
+          <input type="number" placeholder="id" id="putid" />
+          <input type="name" placeholder="name" id="putname" />
+          <input type="number" placeholder="price" id="putprice" />
+          <button onclick="putProduct()">POST Product</button>
+        </div>
+</body>
+<script>
+
+    async function putProduct(){
+        const data = {
+            id:document.getElementById('putid').value,
+            name:document.getElementById('putname').value,
+            price:document.getElementById('putprice').value
+        }
+       //Make a post request 
+       let response = await fetch(`http://127.0.0.1:5000/api/products/${data.id}`,{
+           method:"PUT",
+           body: JSON.stringify(data),
+           headers:{
+               "Content-Type":"application/json"
+           },
+       });
+
+       let d = await response.json();
+       console.log(d)
+        
+     }
+</script>
+</html>
