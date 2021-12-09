@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get</title>
+</head>
+<body>
+    <div>   
+        <h1>Get Product</h1>
+        
+        <input type="text" id="get_id" placeholder="Enter id to Delete" />
+  
+        <button onclick="getProduct()">Delete Product</button>
+      </div>
+      <div id="product">
+          
+      </div>
+</body>
+<script>
+    async function getProduct(){
+        const id = document.getElementById("get_id").value
+        let response = await fetch(`http://127.0.0.1:5000/api/products/${id}`,{
+            method:"GET",
+            headers:{
+                "Content-Type":"application/json"
+            },
+        });
+        let d = await response.json();
+        console.log(d);
+        display(d)
+    }
+
+    function display(d){
+        console.log(d.name,d.price)
+       var product = document.getElementById("product")
+         product.innerHTML = `<h1>${d.name}</h1>
+          <p>${d.price}</p>`
+    }
+
+</script>
+</html>
