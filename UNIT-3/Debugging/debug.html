@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body> 
+<script>
+    var n= 4
+var str = "ABCD"
+var newstr = []
+var crnt = 0
+GenSubseq(str,newstr,crnt)
+function GenSubseq(str,newstr,crnt){
+  if(newstr.length > 0){
+      console.log(newstr.join(""))
+  }
+  if(crnt == str.length){
+      return ;
+  }
+  for(var i=crnt; i<str.length; i++){
+       newstr.push(str[i])
+       GenSubseq(str,newstr,i+1)
+       newstr.pop()
+  }
+}
+
+</script>
+</html>
