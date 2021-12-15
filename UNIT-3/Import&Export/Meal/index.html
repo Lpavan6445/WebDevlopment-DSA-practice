@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./navbarStyle.css">
+    <link rel="stylesheet" href="./products.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Food </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&family=M+PLUS+1+Code:wght@600&family=Roboto:wght@100&family=Source+Code+Pro&display=swap');
+        </style>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="navbar">
+
+    </div>
+    <div id="container">
+
+    </div>
+</body>
+<script type="module">
+     import {navbar,products,display} from "./script.js"
+        var nav = document.getElementById("navbar")
+        nav.innerHTML = navbar() 
+        console.log(navbar())
+    //  products()
+    var submit = document.getElementById("submit")
+      submit.addEventListener("click",search)
+
+       function search(){
+            var input = document.getElementById("input").value
+             console.log(input)
+            var url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`
+            products(url)
+       }
+        
+</script>
+</html>
