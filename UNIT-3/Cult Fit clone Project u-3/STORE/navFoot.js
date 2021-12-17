@@ -55,9 +55,8 @@ function navbar(){
             <img src="https://static.cure.fit/assets/images/curefit-v-man.svg" alt="cult fit logo">
         </a>
         <div id="spet">
-
-             <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/image/header-web/eat-fit.svg" alt="eat" class=" css-130q1oe-ImageElement efaomd31" loading="lazy" width="66.66" height="19.999999999999996">
-           <img  id="dropdown-arrow" class="dropdownarrow" src="https://static.cure.fit/assets/images/arrow-clp.svg" alt="Expand menu" style="transform: rotate(180deg); min-height: 15px; min-width: 15px;">
+          <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/image/header-web/store_fit.svg" alt="store" class=" css-130q1oe-ImageElement efaomd31" loading="lazy" width="92.2" height="20">    
+          <img  id="dropdown-arrow" class="dropdownarrow" src="https://static.cure.fit/assets/images/arrow-clp.svg" alt="Expand menu" style="transform: rotate(180deg); min-height: 15px; min-width: 15px;">
         </div>
     </div>
      <div id="eatSubpages">
@@ -79,7 +78,7 @@ function navbar(){
             <div id="login-text" class="login-text">Login</div>
         </div>
         <div id="cart" class="cart">
-            <img src="https://static.cure.fit/assets/images/cart-image.svg" alt="cart logo">
+            <img id="cartNik" src="https://static.cure.fit/assets/images/cart-image.svg" alt="cart logo">
         </div>
     </div>
 </div>`
