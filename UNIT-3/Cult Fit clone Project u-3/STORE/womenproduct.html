@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link href="//db.onlinewebfonts.com/c/53cdcb7507a23013519313393248b9bd?family=BrandonTextWeb-Bold" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="navFooterStyle.css">
+    <link rel="stylesheet" href="productsStyle.css">
+    <link href="//db.onlinewebfonts.com/c/47b83f8dbd3bf93e0df5674b32c6a7e4?family=BrandonTextWeb-Regular" rel="stylesheet" type="text/css"/>    <title>Document</title>
+    <style>
+        body{
+            font-family: BrandonTextWeb-Regular,Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+            position: relative;
+            margin: 0;
+        }
+                /* <----------Loading---------> */
+        #preloader{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+
+        }
+        #preloader>img{
+        width: 100px;
+        height:100px;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 10;
+        /* padding:500px; */
+        top:  38vh;
+        left: 47%;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+        padding:20px;
+        }
+        #mainBody{
+        display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader"> 
+        <img src="https://static.cure.fit/assets/images/loader-v2.gif">
+    </div>
+    <!-- <------------------------------------------>
+  
+    <!----------------------MainBody-------------------------> 
+    <div id="mainBody"> 
+      <!----------------Navar----------------> 
+       <div id="navbar">
+        
+       </div>
+       <!-- <-----------MenProducts------------------------>
+       <div class="category-title">Women</div>
+       <div id="Products">
+        
+       </div>
+      
+       <!-------------------------------- footer part ------------------------------------->
+        <div id="foot">
+        
+        </div>
+    </div>
+</body>
+<script type="module">
+import {navbar,footer} from "./navFoot.js"
+import {womendata} from "./womendata.js"
+   
+    var myVar;
+        window.addEventListener('load', (event) => {
+            myVar = setTimeout(showPage, 500);
+        });
+  
+    function showPage() {
+      document.getElementById("preloader").style.display = "none";
+      document.getElementById("mainBody").style.display = "block";
+    }
+
+        
+     var nav = document.getElementById("navbar")
+        nav.innerHTML = navbar()
+     var foot = document.getElementById("foot")
+        foot.innerHTML = footer()
+       
+      //  <-----------------Eatfit dropDown topleft------------------>
+        var spet = document.getElementById("spet")
+         var toggle = false;
+        spet.addEventListener("click",function(){
+           var headDropDown = document.getElementById("headDropDown")
+           var droparrow = document.getElementById("dropdown-arrow")
+           
+           if(toggle){
+            headDropDown.style.display = "none"
+            toggle = false
+            droparrow.style.transform = "rotate("+180+"deg)"
+           }else{
+            headDropDown.style.display = "flex"
+            toggle = true
+            droparrow.style.transform = "rotate("+0+"deg)"
+           }
+       })
+    //    <-----------------ShoeWomenProducts-------------------->
+    shoeProducts(womendata)
+       function shoeProducts(womendata){
+        var products = document.getElementById("Products")
+        products.innerHTML = ""
+        womendata.forEach((el)=>{
+            console.log(el.image1,el.price)
+            var product = document.createElement("Product")
+                product.id="product"
+              var productImg = document.createElement("img")
+              
+              productImg.src = el.image1
+              var title = document.createElement("p")
+                title.id="title"
+                title.textContent = el.name
+               var price = document.createElement("p")
+                 price.id="price"
+                 price.textContent = `₹ ${el.price}`
+               var discount = document.createElement("p")
+               discount.id="discount"
+               discount.innerHTML = "45% Discount"  
+            product.addEventListener("click", function(){
+                var arr=[]
+                arr.push(el)
+                localStorage.setItem("productDetails",JSON.stringify(arr))
+                window.location.href = "productsDetails.html"
+            })
+            product.append(productImg,title,price,discount)
+            products.append(product)
+        })
+       }
+</script>
+</html>
