@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="navFooterStyle.css">
     <link rel="stylesheet" href="productsStyle.css">
     <link href="//db.onlinewebfonts.com/c/47b83f8dbd3bf93e0df5674b32c6a7e4?family=BrandonTextWeb-Regular" rel="stylesheet" type="text/css"/>    <title>Document</title>
-    <link rel = "icon" href = "https://static.cure.fit/assets/images/favicon-modified.png" type = "image/x-icon">
-        <title>Cult Fit</title>
+    <title>Men Product</title>
     <style>
         body{
             font-family: BrandonTextWeb-Regular,Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
@@ -27,8 +26,8 @@
 
         }
         #preloader>img{
-        width: 100px;
-        height:100px;
+        width: 60px;
+        height:60px;
         border-radius: 50%;
         position: absolute;
         z-index: 10;
@@ -98,6 +97,7 @@ import {mendata} from "./menData.js"
            var droparrow = document.getElementById("dropdown-arrow")
            
            if(toggle){
+
             headDropDown.style.display = "none"
             toggle = false
             droparrow.style.transform = "rotate("+180+"deg)"
@@ -142,13 +142,14 @@ import {mendata} from "./menData.js"
         })
        }
     // <---------------------Cart Page------------------------>
-        var cartData = JSON.parse(localStorage.getItem('addnik')) || [];
+        var cartData=JSON.parse(localStorage.getItem('addnik'))||[];
         console.log(cartData);
 
 
      let cart=document.getElementById("cartNik")
      var toggle = false;
        cart.addEventListener("click",function (){
+        console.log("clicked")
            if(toggle){
                toggle = false;
                 chiDiv.style.display = "none"
@@ -349,7 +350,23 @@ import {mendata} from "./menData.js"
         // buttonCart.setAttribute("id", "buttonCart")
         buttonCart.textContent = `${quantity} items  •${Total}`;
          document.getElementById("chiDiv").append(buttonCart)
-
      }
+
+    // <--------------RigthDropDown--------------->
+    var arrow = document.getElementById("image11")
+    arrow.addEventListener("click", showdata)
+    var toggle = false
+    function showdata() {
+
+        if (toggle) {
+            toggle = false
+            document.getElementById("logindata").style.display = "none";
+            // arrow.style.transform = "rotate(" + 0 + "deg)"
+        } else {
+            toggle = true
+            document.getElementById("logindata").style.display = "flex";
+            // arrow.style.transform = "rotate(" + 0 + "deg)"
+        }
+    }
 </script>
 </html>
