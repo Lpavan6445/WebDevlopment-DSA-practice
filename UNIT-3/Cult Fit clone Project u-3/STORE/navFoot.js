@@ -73,9 +73,48 @@ function navbar(){
             <div id="blue-dot" class="blue-dot"></div>
             <div id="cityName" class="cityName">Bangalore</div>
         </div>
+        <div id="profile">
+        <img src="https://profile-pictures-prod.s3.amazonaws.com/5491b50b-b284-490f-a55d-db97431b1e32" style="max-width:100%;max-height:90%">
+        </div>
         <div id="logged-out" class="logged-out">
-            <img src="https://static.cure.fit/assets/images/user-image.svg" alt="login image">
-            <div id="login-text" class="login-text">Login</div>
+        <div>
+          <img id="image11" src="https://cdn-icons-png.flaticon.com/512/25/25623.png" />
+        </div>
+       <div id="logindata">
+      
+            <div id="list">
+                <img class="imgall" src="https://static.cure.fit/assets/images/profile-icon.svg" />
+                <a class="allat" >Profile</a>
+            </div>
+            <div id="list">
+                <img class="imgall" src="https://static.cure.fit/assets/images/cart-black.svg" />
+                <a class="allat" >Orders</a>
+            </div>
+            <div id="list">
+                <img class="imgall" src="https://static.cure.fit/assets/images/health-profile-black.svg" />
+                <a class="allat" >Medical Records</a>
+            </div>
+            <div id="list">
+                <img class="imgall" src="https://static.cure.fit/assets/images/combined-shape-black.svg" />
+                <a class="allat" >Active Packs</a>
+            </div>
+            <div id="list">
+                <img class="imgall" src="https://static.cure.fit/assets/images/coupon-black.svg" />
+                <a class="allat" >Redeem Vouchers</a>
+            </div>
+            <div id="list">
+                <img class="imgall" src="https://static.cure.fit/assets/images/settings-black.svg" />
+                <a class="allat" >Account</a>
+            </div>
+            <div id="list">
+                <img class="imgall" src="https://static.cure.fit/assets/images/support-black.svg" />
+                <a class="allat" >Support</a>
+            </div>
+            <div id="list">
+                <img class="imgall" src="https://static.cure.fit/assets/images/logout-black.svg" />
+                <a class="allat" href="">Logout</a>
+            </div>
+    </div>
         </div>
         <div id="cart" class="cart">
             <img id="cartNik" src="https://static.cure.fit/assets/images/cart-image.svg" alt="cart logo">
