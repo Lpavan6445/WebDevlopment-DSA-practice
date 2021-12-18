@@ -5,39 +5,280 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="navFooterStyle.css">
-
-    <title>cartpage</title>
+    <title>CART PAGE</title>
 </head>
 <style>
-     body{
-            font-family: BrandonTextWeb-Regular,Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
-            position: relative;
-            margin: 0;
+    /* <---------Topleft DropDown-----------> */
+    body {
+        margin: 0;
+    }
+
+   /* <-------------------------------- Login Arrow css -------------------------------------> */
+   #logindata {
+            width: 200px;
+            /* height: 300px; */
+            background-color: #FFFFFF;
+            display: none;
+            position: absolute;
+            flex-direction: column;
+            flex-wrap: wrap;
+             justify-content:space-between;
+            right: 0;
+            top:100%;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
-    /* NAVBAR STARTS HERE */
-      /* NAVBAR CSS */
+        #profile{
+            width:40px;
+            height:40px;
+        }
+        .imgall {
+            width: 50px;
+            height: 25px;
+            padding-left: 10px;
+            
+        }
+
+        #list a{
+            color: black;
+            text-decoration: none;
+            /* margin-left: 12px; */
+            font-size: 13px;
+        }
+        #list {
+            list-style: none;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            margin: 0px 10px;
+            cursor: pointer;
+            padding: 5px 0px;
+        }
+         #list:hover{
+            transition: background-color 0.3s ease-in-out 0s;
+            box-shadow: rgba(0, 0, 0, 0.219) 0px 4px 10px 0px;
+ 
+        }
+/* <-----------------NavBarStyle---------------------> */
+#navbar {
+    width: 100%;
+    height: 64px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px 0 rgb(0 0 0 / 15%);
+    display: flex;
+    /* position: relative; */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+#spet{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}
+#innerNavbar {
+    width: 97%;
+    margin: auto;
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo { 
+    width: 10%;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    /* border: 2px solid orange; */
+}
+
+.logo:hover {
+    color: rgb(163, 156, 156);
+}
+
+.diff-pages {
+    width: 40%;   
+}
+
+#navbar ul {
+    display: flex;
+    justify-content: space-between;
+   align-items: center;
+   
   
-       #divFlexN{
+    /* border: 1px solid green; */
+    margin-bottom: 0px;
+    margin-top: 0px;
+   
+}
+
+#navbar ul li {
+    height: 100%;
+    list-style: none;
+}
+#navbar ul li a img {
+    width: 25px;
+    height: 25px;
+}
+
+#navbar li a p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 12px;
+    font-family: "BrandonTextWeb-Medium";
+}
+#eatSubpages{
+    display: flex;
+    justify-content:space-between;
+    justify-content: center;
+    align-items: center;
+    
+}
+#eatSubpages ul li a{
+    margin-left: 60px;
+    margin-right: 40px;
+    font-family: BrandonTextWeb-Bold, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    line-height: 1.25;
+    letter-spacing: 0.1px;
+    text-decoration: none;
+    color: rgb(64, 64, 64);
+}
+ #order> a:nth-child(1){
+    color: rgb(252, 46, 113);
+}
+.user-details {
+    width: 20%;
+    height: 100%;
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.blue-dot {
+    height: 9px;
+    width: 9px;
+    border-radius: 50%;
+    background-color: rgb(15, 209, 255);
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.cityName {
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: middle;
+    max-width: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1em;
+    height: 1em;
+    text-align: left;
+    white-space: nowrap;
+}
+.location {
+    margin-right: 20px;
+}
+
+.logged-out {
+    display: flex;
+    padding: 0 0.5rem;
+    padding-top: 3px;
+}
+
+.logged-out img {
+    width: 16px;
+    height: 16px;
+  
+    margin-right: 0.5rem;
+}
+
+.logged-out .login-text {
+    color: black;
+    font-size: 14px;
+  
+}
+
+
+.cart img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+     /* margin-left: 100%; */
+      /* justify-content: right; */
+}
+/* <---------Topleft DropDown-----------> */
+
+.headerDropDown{
+    display:none;
+    position: absolute;
+     width:17%;
+  /*    height:230px; */
+    border:1px solid black;
+    /* display:flex; */
+    flex-flow:row wrap;
+    justify-content:space-between;
+    padding: 3px;
+      background: rgb(255, 255, 255);
+  /*     color: rgb(255, 255, 255); */
+      text-align: center;
+      /* font-size: 16px; */
+      border: 1px solid rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0) 0px 0px 30px -16px;    left: 3%;
+      top: 80%;
+      z-index: 9999;
+  }
+  .headerDropDown>.dropDownElem{
+        padding: 20px;
+    /* width:30%; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  /*     width: 100%; */
+    font-family: BrandonTextWeb-Bold, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+      font-size: 12px;
+      cursor: pointer;
+  }
+  .headerDropDown>.dropDownElem:nth-child(6){
+    font-family: BrandonTextWeb-Bold, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    color: rgb(255, 49, 109);
+  }
+  .dropDownElem >div>img{
+    width:23px;
+    height:23px;
+  }
+  #dropdown-arrow{
+      padding:5px;
+      width: 20px;
+  }
+
+    #divFlexN {
         /* width: 25%; */
         display: flex;
         overflow: scroll;
         overflow-y: hidden;
         font-size: 16px;
-            color: rgb(0, 0, 0);
-    font-family: BrandonTextWeb-Medium, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+        color: rgb(0, 0, 0);
+        font-family: BrandonTextWeb-Medium, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
         margin-bottom: 30px;
         margin-top: -30px;
     }
-        #disDivCon{
+
+    #disDivCon {
         display: flex;
     }
-    #divspi{
-        width: 100%; 
+
+    #divspi {
+        width: 100%;
         background-color: white;
     }
-    #quant{
-        border: 2px solid rgb(255,78,116);
+
+    #quant {
+        border: 2px solid rgb(255, 78, 116);
         width: 90px;
         margin-top: 10px;
         height: 30px;
@@ -46,315 +287,627 @@
         font-size: 25px;
         display: flex;
     }
-    #imgcART{
+
+    #imgcART {
         width: 120px;
         margin-right: 10px;
         margin-left: 10px;
     }
-     #countshow{
+
+    #countshow {
         font-size: 20px;
         margin-left: 10px;
-         margin-right: 10px;
-         margin-top: 3px;
+        margin-right: 10px;
+        margin-top: 3px;
     }
-    hr{
+
+    hr {
         height: 1px;
-          background-color: lightgray;
+        background-color: lightgray;
         width: 85%;
     }
-    #scrollN{
-          max-height: 400px;
-         overflow: scroll;
-         margin-top: -10px;
-           position:relative;
-           overflow-x: hidden;
+
+    #scrollN {
+        max-height: 400px;
+        overflow: scroll;
+        margin-top: -10px;
+        position: relative;
+        overflow-x: hidden;
     }
-     #chiDiv{
+
+    #chiDiv {
         position: absolute;
-        left:0;
+        left: 0;
         z-index: 99000;
         width: 30%;
         margin-left: 8%;
     }
-    #deleteProd{
+
+    #deleteProd {
         position: absolute;
-        width:12px;
+        width: 12px;
         height: 12px;
         right: 15px;
         cursor: pointer;
     }
+
     /* final amount starts here */
-    #finalAmt{
+    #finalAmt {
         margin-left: 50%;
     }
-    #nikFlex{
+
+    #nikFlex {
         display: flex;
     }
-    #totalAmt{
+
+    #totalAmt {
         margin-left: 55%;
     }
-     #totalDisc{
+
+    #totalDisc {
         margin-left: 54%;
     }
-    #finalTotal{
+
+    #finalTotal {
         font-size: 20px;
         font-weight: bolder;
         margin-left: 47.5%;
     }
-    #selectAdd{
-      border-radius: 31px;
-    background-image: linear-gradient(
-103deg,#f74530,#ff2e73);
-    padding: 18px 50px;
-    border: 0;
-    color: #fff;
-    margin-left: 55%;
-    margin-top: 20px;
-    cursor: pointer;
+
+    #selectAdd {
+        border-radius: 31px;
+        background-image: linear-gradient(103deg, #f74530, #ff2e73);
+        padding: 18px 50px;
+        border: 0;
+        color: #fff;
+        margin-left: 55%;
+        margin-top: 20px;
+        cursor: pointer;
     }
-    #TOT{
-            opacity: .87;
-    font-family: BrandonTextWeb-Regular,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    text-align: left;
-    margin-top: 0;
-    margin-bottom: 0;
-    /* color: lightgray; */
+
+    #TOT {
+        opacity: .87;
+        font-family: BrandonTextWeb-Regular, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: left;
+        margin-top: 0;
+        margin-bottom: 0;
+        /* color: lightgray; */
     }
-    #DIS{
-          opacity: .87;
-    font-family: BrandonTextWeb-Regular,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    text-align: left;
-    margin-top: 0;
-    margin-bottom: 0;
+
+    #DIS {
+        opacity: .87;
+        font-family: BrandonTextWeb-Regular, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: left;
+        margin-top: 0;
+        margin-bottom: 0;
     }
-    #PAY{
-        font-family: BrandonTextWeb-Bold,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.67;
-    text-align: left;
-    margin-top: 0;
-    margin-bottom: 0;
-    color: #000;
+
+    #PAY {
+        font-family: BrandonTextWeb-Bold, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.67;
+        text-align: left;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #000;
     }
-    #checkOut{
-        font-family: BrandonTextWeb-Bold,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif!important;
-    font-size: 18px;
-    padding-bottom: 0.5rem;
-    color: #000;
-    font-weight: bolder;
+
+    #checkOut {
+        font-family: BrandonTextWeb-Bold, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif !important;
+        font-size: 18px;
+        padding-bottom: 0.5rem;
+        color: #000;
+        font-weight: bolder;
     }
-    #pprod{
-     max-height: 36px;
-    font-size: 15px;
-    line-height: 1.2;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0 7px 4px;
-    text-align: left;
-    color: #9b9b9b;
-    }
-    #psize{
+
+    #pprod {
         max-height: 36px;
-    font-size: 15px;
-    line-height: 1.2;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0 7px 4px;
-    text-align: left;
-    color: #9b9b9b;
+        font-size: 15px;
+        line-height: 1.2;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0 7px 4px;
+        text-align: left;
+        color: #9b9b9b;
     }
+
+    #psize {
+        max-height: 36px;
+        font-size: 15px;
+        line-height: 1.2;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0 7px 4px;
+        text-align: left;
+        color: #9b9b9b;
+    }
+/* <----------------Payment PopUp--------------------> */
+        #paymentDiv{
+            display: none;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.692);
+            position:absolute;
+            top: 0;
+            z-index: 999999999999;
+        }
+        #payment{ 
+            overflow-y: initial;
+            overflow-x: hidden;
+            width: 450px;
+            height: 90vh;
+            margin: auto;
+            margin-top: 2%;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            border-radius: 6px;
+            z-index: 5;
+            background-color: rgb(255, 255, 255);
+            box-shadow: rgb(0 0 0 / 50%) 0px 5px 15px;
+            border-radius: 15px;
+        }
+         #paymentHeadline{
+            font-size: 18px;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+            position: relative;
+            font-family: BrandonTextWeb-Bold, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+         }
+         #closePayment{
+              position: absolute;
+              right: 15px;
+              padding:5px;
+              top: 20%;
+         }
+         #paymentmainBody{
+            padding: 20px;
+            color: rgb(0, 0, 0);
+             overflow: scroll;
+         }
+         #totalDiv{
+            background-color: rgb(221, 221, 253);
+            padding: 2rem;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: BrandonTextWeb-Medium, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+         }
+         #total{
+             float: right;
+         }
+         .paymentbody{
+            min-height: 50px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            margin: 10px 0px;
+            -webkit-box-align: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: BrandonTextWeb-Bold, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+            line-height: 1.19;
+            color: rgb(88, 88, 88);
+            padding-bottom: 0.2rem;
+            border-radius: 10px;
+         }
+         .paymentbody:hover{
+            transition: background-color 0.3s ease-in-out 0s;
+            box-shadow: rgba(0, 0, 0, 0.219) 0px 4px 10px 0px;
+         }
+         .payment-image{
+            width: 50px;
+            margin-right: 2rem;
+            margin-left: 1rem;
+         }   
+
+
 </style>
 
-<body id="body">
-<!-- NAVBAR STARTS HERE -->
-<nav id="navbar">
-   
-</nav>
-<div id="chiDiv"></div>
-<div id="cartFinal">
-        <div id="previewCart">
+<body>
+    <!------NavDropDown top left--------->
+    <div id="navbar">
+        <div class="headerDropDown" id="headDropDown">
+            <div class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/cult-icon.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    CULT
+                </div>
+            </div>
+            <div class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/Livefit.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    LIVE
+                </div>
+            </div>
+            <div onclick="window.location.href='./EAT/eatordernow.html'" class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/eat-hover-icon.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    EAT
+                </div>
+            </div>
+            <div class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/mind-icon.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    MIND
+                </div>
+            </div>
+            <div class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/carefit-blk.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    CARE
+                </div>
+            </div>
+            <div class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/store-icon.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    STORE
+                </div>
+            </div>
+        </div>
+        <!-----Navbar----------->
+        <div class="headerDropDown" id="headDropDown">
+            <div class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/cult-icon.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    CULT
+                </div>
+            </div>
+            <div class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/Livefit.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    LIVE
+                </div>
+            </div>
+            <div onclick="window.location.href='./EAT/eatordernow.html'" class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/eat-hover-icon.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    EAT
+                </div>
+            </div>
+            <div class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/mind-icon.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    MIND
+                </div>
+            </div>
+            <div class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/carefit-blk.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    CARE
+                </div>
+            </div>
+            <div class="dropDownElem">
+                <div class="image-wrapper ">
+                    <img alt="" src="https://static.cure.fit/assets/images/store-icon.svg">
+                </div>
+                <div class="css-1daiy-toolTipContent">
+                    STORE
+                </div>
+            </div>
+        </div>
+        <div id="innerNavbar">
+            <div id="logo" class="logo">
+                <a href="home.html">
+                    <img src="https://static.cure.fit/assets/images/curefit-v-man.svg" alt="cult fit logo">
+                </a>
+                <div id="spet">
+
+                    <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/image/header-web/store_fit.svg"
+                        alt="eat" class=" css-130q1oe-ImageElement efaomd31" loading="lazy" width="66.66"
+                        height="19.999999999999996">
+                    <img id="dropdown-arrow" class="dropdownarrow"
+                        src="https://static.cure.fit/assets/images/arrow-clp.svg" alt="Expand menu"
+                        style="transform: rotate(180deg); min-height: 15px; min-width: 15px;">
+                </div>
+            </div>
+            <div id="user-details" class="user-details">
+                <div id="location" class="location">
+
+                    <div id="blue-dot" class="blue-dot"></div>
+                    <div id="cityName" class="cityName">Bangalore</div>
+                </div>
+                <div id="profile">
+                    <img src="https://profile-pictures-prod.s3.amazonaws.com/5491b50b-b284-490f-a55d-db97431b1e32" style="max-width:100%;max-height:90%">
+                </div>
+                <div id="logged-out" class="logged-out">
+                    <div>
+                        <img id="image11" src="https://cdn-icons-png.flaticon.com/512/25/25623.png" />
+                      </div>
+
+                     <div id="logindata">
+        
+                          <div id="list">
+                              <img class="imgall" src="https://static.cure.fit/assets/images/profile-icon.svg" />
+                              <a class="allat" >Profile</a>
+                          </div>
+                          <div id="list">
+                              <img class="imgall" src="https://static.cure.fit/assets/images/cart-black.svg" />
+                              <a class="allat" >Orders</a>
+                          </div>
+                          <div id="list">
+                              <img class="imgall" src="https://static.cure.fit/assets/images/health-profile-black.svg" />
+                              <a class="allat" >Medical Records</a>
+                          </div>
+                          <div id="list">
+                              <img class="imgall" src="https://static.cure.fit/assets/images/combined-shape-black.svg" />
+                              <a class="allat" >Active Packs</a>
+                          </div>
+                          <div id="list">
+                              <img class="imgall" src="https://static.cure.fit/assets/images/coupon-black.svg" />
+                              <a class="allat" >Redeem Vouchers</a>
+                          </div>
+                          <div id="list">
+                              <img class="imgall" src="https://static.cure.fit/assets/images/settings-black.svg" />
+                              <a class="allat" >Account</a>
+                          </div>
+                          <div id="list">
+                              <img class="imgall" src="https://static.cure.fit/assets/images/support-black.svg" />
+                              <a class="allat" >Support</a>
+                          </div>
+                          <div id="list">
+                              <img class="imgall" src="https://static.cure.fit/assets/images/logout-black.svg" />
+                              <a class="allat" href="">Logout</a>
+                          </div>
+                  </div>
+                </div>
+                <div id="cart" class="cart">
+                    <img id="cartNik" src="https://static.cure.fit/assets/images/cart-image.svg" alt="cart logo">
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div>
+        <div id="cartFinal">
+            <div id="previewCart">
                 <div id="chiDiv"></div>
+            </div>
+            <div id="finalAmt">
+                <div id="nikFlex">
+                    <div style="margin-top: 10px;">
+                        <img src="https://static.cure.fit/assets/images/locationPink.svg" alt="">
+                    </div>
+                    <div style="margin-left: 5%;">
+                        <p
+                            style="font-family: BrandonTextWeb-Regular,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;">
+                            Please
+                            Add Address</p>
+                    </div>
+                    <div style="margin-left: 45%;">
+                        <p style="color:rgb(255,78,116);;">Add/Modify</p>
+                    </div>
+                </div>
+                <hr style="margin-right: 105px;margin-top: 2px;">
+                <div id="TOT" style="margin-top: 40px;">
+                    <span style="margin-left: 55px;">Total Price</span>
+                    <span id="totalAmt"></span>
+                </div>
+                <div id="DIS" style="margin-top: 15px;">
+                    <span style="margin-left: 53px;">(-) Discount</span>
+                    <span id="totalDisc"></span>
+                </div>
+                <div id="PAY" style="margin-top: 19px;">
+                    <span style="margin-left: 55px;">Total Payable</span>
+                    <span id="finalTotal"></span>
+                </div>
+                <button id="selectAdd">Check Out</button>
+            </div>
+
         </div>
-        <div id="finalAmt">
-            <div id="nikFlex">
-                <div style="margin-top: 10px;">
-                    <img  src="https://static.cure.fit/assets/images/locationPink.svg" alt="">
-                </div>
-                <div style="margin-left: 5%;">
-                    <p style="font-family: BrandonTextWeb-Regular,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;">Please Add Address</p>
-                </div>
-                <div style="margin-left: 45%;">
-                    <p style="color:rgb(255,78,116);;">Add/Modify</p>
-                </div>
-            </div>
-            <hr style="margin-right: 105px;margin-top: 2px;">
-            <div id="TOT" style="margin-top: 40px;">
-                <span style="margin-left: 55px;">Total Price</span>
-                <span id="totalAmt"></span>
-            </div>
-            <div id="DIS" style="margin-top: 15px;">
-                <span style="margin-left: 53px;">(-) Discount</span>
-                <span id="totalDisc"></span>
-            </div>
-            <div id="PAY" style="margin-top: 19px;">
-                <span style="margin-left: 55px;">Total Payable</span>
-                <span id="finalTotal"></span>
-            </div>
-            <button id="selectAdd">Select Address</button>
-        </div>
- 
-</div>
+    </div>
+         <div id="paymentDiv">
+             <div id="payment">
+                   <div id="paymentHeadline">
+                       <div>Payment Option</div>
+                       <div id="closePayment">
+                           <img src="https://static.cure.fit/assets/images/modal-close.svg">
+                       </div>
+                  </div>
+                  <div id="paymentmainBody">
+                       <div id="totalDiv">
+                           <span>Total</span><span id="paymenttotal">$ 1000</span>
+                       </div>
+                   
+                       <div id="paytm" class="paymentbody"> 
+                           <img class="payment-image" src="https://static.cure.fit/assets/images/paytm_v1.svg">
+                           <div>Paytm</div>
+                       </div>
+                       <div id="creditCard" class="paymentbody"> 
+                           <img class="payment-image" src="https://static.cure.fit/assets/images/card-pay.svg">
+                           <div>Credit / Debit Card</div>
+                       </div>
+                       <div id="upi" class="paymentbody"> 
+                           <img class="payment-image" src="https://static.cure.fit/assets/images/upi-payment.svg">
+                           <div>UPI</div>
+                       </div>
+                       <div id="payon" class="paymentbody"> 
+                           <img class="payment-image" src="https://static.cure.fit/assets/images/cod.svg">
+                           <div>Pay on Delivery</div>
+                       </div>
+                       <div id="phone" class="paymentbody"> 
+                           <img class="payment-image" src="https://static.cure.fit/assets/images/phonePe.svg">
+                           <div>Phone/BHIM UPI</div>
+                       </div>
+                       <div id="netbanking" class="paymentbody"> 
+                           <img class="payment-image" src="https://static.cure.fit/assets/images/net-banking.svg">
+                           <div>Net Banking</div>
+                       </div>
+                       <div id="amazonpay" class="paymentbody"> 
+                           <img class="payment-image" src="https://static.cure.fit/assets/images/amazon-pay-short.png">
+                           <div>Amazon Pay</div>
+                       </div>
+                       <div id="wallet" class="paymentbody"> 
+                           <img class="payment-image" src="https://static.cure.fit/assets/images/wallets.svg">
+                           <div>Wallet</div>
+                       </div>
+                  </div>
+             </div>
+         </div>
+
+   </div>
 </body>
 
 </html>
 
-<script type="module">
+<script>
+    // <----------NavbarDropDown----------------->
+    var spet = document.getElementById("spet")
+    var toggle = false;
+    //  <-----------------Eatfit dropDown topleft------------------>
+    spet.addEventListener("click", function () {
+        var headDropDown = document.getElementById("headDropDown")
+        var droparrow = document.getElementById("dropdown-arrow")
 
-    import {navbar,footer} from "./navFoot.js"
-    var nav = document.getElementById("navbar")
-        nav.innerHTML = navbar()
- 
-     var cartData = JSON.parse(localStorage.getItem('addnik')) || [];
-        console.log(cartData);
+        if (toggle) {
+            headDropDown.style.display = "none"
+            toggle = false
+            droparrow.style.transform = "rotate(" + 180 + "deg)"
+        } else {
+            headDropDown.style.display = "flex"
+            toggle = true
+            droparrow.style.transform = "rotate(" + 0 + "deg)"
+        }
 
-     myFuncN(cartData)
-        function myFuncN(cartData) {
-            document.getElementById("chiDiv").innerHTML = null
-            let divN = document.createElement("div")
-            divN.setAttribute("id", "divspi");
+    })
+    // <------>
 
-            let pN = document.createElement("p");
-            pN.textContent = "Cultgear Order Summary";
-           pN.id="checkOut"
+    var cartData = JSON.parse(localStorage.getItem('addnik')) || [];
+    console.log(cartData);
 
-            divN.append(pN)
+    myFuncN(cartData)
+    function myFuncN(cartData) {
+        document.getElementById("chiDiv").innerHTML = null
+        let divN = document.createElement("div")
+        divN.setAttribute("id", "divspi");
 
+        let pN = document.createElement("p");
+        pN.textContent = "Cultgear Order Summary";
+        pN.id = "checkOut"
 
-
-            // ==================================================
-
-           
-
-            let scrollN = document.createElement("div")
-            scrollN.setAttribute("id", "scrollN")
-
-            divN.append(scrollN)
-            var Total = 0;
-            var quantity = 0;
-            cartData.forEach(function (nik, index) {
-                console.log(nik);
-                Total += (+nik.price);
-                quantity++;
-                let countcart = 1;
-                
+        divN.append(pN)
 
 
 
-                // ===================================
-
-                let disDiv = document.createElement("div");
-                disDiv.setAttribute("id", "disDiv")
-
-                // =====================
-
-                let disDivCon = document.createElement("div");
-                disDivCon.setAttribute("id", "disDivCon")
-                // =============================
-
-                let con1 = document.createElement("div");
-
-                let imgcART = document.createElement("img");
-                imgcART.src = nik.image1
-                imgcART.setAttribute("id", "imgcART")
-
-                con1.append(imgcART)
-
-
-                // =============================
-                let con2 = document.createElement("div");
-
-                let deleteProd = document.createElement("img")
-                deleteProd.id = "deleteProd"
-                deleteProd.src = "https://static.cure.fit/assets/images/modal-close.svg"
-                deleteProd.addEventListener("click", function (index) {
-                    cartData.splice(index, 1)
-                    myFuncN(cartData)
-                    localStorage.setItem("addnik", JSON.stringify(cartData))
-                })
-
-                let pprod = document.createElement("p");
-                pprod.textContent = nik.name
-                pprod.id="pprod"
-
-
-                let psize = document.createElement("p");
-                psize.textContent = nik.color;
-                psize.id="psize"
-
-                let collection = document.createElement("div")
-                collection.style.display = "flex"
-                collection.style.marginRight = "30px"
+        // ==================================================
 
 
 
-                let pprice = document.createElement("p");
-                pprice.textContent = nik.price
+        let scrollN = document.createElement("div")
+        scrollN.setAttribute("id", "scrollN")
 
-                let quant = document.createElement("div")
-                quant.setAttribute("id", "quant")
+        divN.append(scrollN)
+        var Total = 0;
+        var quantity = 0;
+        cartData.forEach(function (nik, index) {
+            console.log(nik);
+            Total += (+nik.price);
+            quantity++;
+            let countcart = 1;
 
-                let minus = document.createElement("img")
-                minus.src = "https://static.cure.fit/assets/images/minus.svg"
-                minus.style.width = "15px";
-                minus.style.marginLeft = "10px"
-                minus.style.cursor = "pointer"
-                minus.addEventListener("click", countfunc)
 
-                function countfunc() {
-                    if (countcart == 0) {
-                        return
-                    }
-                    else {
-                        countcart--
-                        Total -= (+nik.price);
-                        console.log(countcart);
-                        countshow.textContent = countcart
-                         let nik1 = document.getElementById("totalAmt")
-                        nik1.textContent = `₹ ${Total}`
-                        let nik2 = document.getElementById("totalDisc")
-                        nik2.textContent = `₹${Math.floor(Total * (30 / 100))}`;
 
-                        let nik3 = document.getElementById("finalTotal")
-                        nik3.textContent = ` ₹${Total - Math.floor(Total * (30 / 100))}`;
 
-                    }
+            // ===================================
 
+            let disDiv = document.createElement("div");
+            disDiv.setAttribute("id", "disDiv")
+
+            // =====================
+
+            let disDivCon = document.createElement("div");
+            disDivCon.setAttribute("id", "disDivCon")
+            // =============================
+
+            let con1 = document.createElement("div");
+
+            let imgcART = document.createElement("img");
+            imgcART.src = nik.image1
+            imgcART.setAttribute("id", "imgcART")
+
+            con1.append(imgcART)
+
+
+            // =============================
+            let con2 = document.createElement("div");
+
+            let deleteProd = document.createElement("img")
+            deleteProd.id = "deleteProd"
+            deleteProd.src = "https://static.cure.fit/assets/images/modal-close.svg"
+            deleteProd.addEventListener("click", function (index) {
+                cartData.splice(index, 1)
+                myFuncN(cartData)
+                localStorage.setItem("addnik", JSON.stringify(cartData))
+            })
+
+            let pprod = document.createElement("p");
+            pprod.textContent = nik.name
+            pprod.id = "pprod"
+
+
+            let psize = document.createElement("p");
+            psize.textContent = nik.color;
+            psize.id = "psize"
+
+            let collection = document.createElement("div")
+            collection.style.display = "flex"
+            collection.style.marginRight = "30px"
+
+
+
+            let pprice = document.createElement("p");
+            pprice.textContent = nik.price
+
+            let quant = document.createElement("div")
+            quant.setAttribute("id", "quant")
+
+            let minus = document.createElement("img")
+            minus.src = "https://static.cure.fit/assets/images/minus.svg"
+            minus.style.width = "15px";
+            minus.style.marginLeft = "10px"
+            minus.style.cursor = "pointer"
+            minus.addEventListener("click", countfunc)
+
+            function countfunc() {
+                if (countcart == 0) {
+                    return
                 }
-
-                let countshow = document.createElement("p")
-                countshow.textContent = countcart
-                countshow.setAttribute("id", "countshow")
-
-
-                let plus = document.createElement("img")
-                plus.src = "https://static.cure.fit/assets/images/plus.svg";
-                plus.style.width = "15px"
-                plus.style.cursor = "pointer"
-                plus.addEventListener("click", countfunc2);
-
-
-                function countfunc2() {
+                else {
+                    countcart--
+                    Total -= (+nik.price);
                     console.log(countcart);
-                     Total += (+nik.price);
-                    countcart++
-                     let nik1 = document.getElementById("totalAmt")
+                    countshow.textContent = countcart
+                    let nik1 = document.getElementById("totalAmt")
                     nik1.textContent = `₹ ${Total}`
                     let nik2 = document.getElementById("totalDisc")
                     nik2.textContent = `₹${Math.floor(Total * (30 / 100))}`;
@@ -362,41 +915,84 @@
                     let nik3 = document.getElementById("finalTotal")
                     nik3.textContent = ` ₹${Total - Math.floor(Total * (30 / 100))}`;
 
-                  
-
-                    countshow.textContent = countcart
-
                 }
 
-                let hr = document.createElement("hr")
+            }
 
-                quant.append(minus, countshow, plus)
-
-                collection.append(pprice, quant)
-
-                con2.append(deleteProd, pprod, psize, collection)
+            let countshow = document.createElement("p")
+            countshow.textContent = countcart
+            countshow.setAttribute("id", "countshow")
 
 
-                disDivCon.append(con1, con2)
+            let plus = document.createElement("img")
+            plus.src = "https://static.cure.fit/assets/images/plus.svg";
+            plus.style.width = "15px"
+            plus.style.cursor = "pointer"
+            plus.addEventListener("click", countfunc2);
 
-                disDiv.append(disDivCon, hr)
 
-                scrollN.append(disDiv)
+            function countfunc2() {
+                console.log(countcart);
+                Total += (+nik.price);
+                countcart++
+                let nik1 = document.getElementById("totalAmt")
+                nik1.textContent = `₹ ${Total}`
+                let nik2 = document.getElementById("totalDisc")
+                nik2.textContent = `₹${Math.floor(Total * (30 / 100))}`;
+
+                let nik3 = document.getElementById("finalTotal")
+                nik3.textContent = ` ₹${Total - Math.floor(Total * (30 / 100))}`;
 
 
-                document.getElementById("chiDiv").append(divN)
 
-            });
-            nik1=document.getElementById("totalAmt")
-           nik1.textContent = `₹ ${Total}`
-            nik2=document.getElementById("totalDisc")
-           nik2.textContent=`₹${Math.floor(Total * (30 / 100))}`;
+                countshow.textContent = countcart
 
-              nik3 = document.getElementById("finalTotal")
-            nik3.textContent =` ₹${Total- Math.floor(Total * (30 / 100))}`;
+            }
 
-       
+            let hr = document.createElement("hr")
 
-        }
+            quant.append(minus, countshow, plus)
 
+            collection.append(pprice, quant)
+
+            con2.append(deleteProd, pprod, psize, collection)
+
+
+            disDivCon.append(con1, con2)
+
+            disDiv.append(disDivCon, hr)
+
+            scrollN.append(disDiv)
+
+
+            document.getElementById("chiDiv").append(divN)
+
+        });
+        nik1 = document.getElementById("totalAmt")
+        nik1.textContent = `₹ ${Total}`
+        nik2 = document.getElementById("totalDisc")
+        nik2.textContent = `₹${Math.floor(Total * (30 / 100))}`;
+
+        nik3 = document.getElementById("finalTotal")
+        nik3.textContent = ` ₹${Total - Math.floor(Total * (30 / 100))}`;
+
+
+
+                
+
+    }
+
+    // <--------------PaymentScript---------------->
+    var checkout = document.getElementById("selectAdd")
+    checkout.addEventListener("click",function(){
+         var paymentDiv = document.getElementById("paymentDiv")
+         paymentDiv.style.display = "block"
+    })
+    var paymenttotal= document.getElementById("paymenttotal")
+    paymenttotal.innerHTML = `${document.getElementById("finalTotal").textContent}`
+    var closePayment = document.getElementById("closePayment")
+    closePayment.addEventListener("click",function(){
+        var closePayment = document.getElementById("closePayment")
+        paymentDiv.style.display = "none"
+    })
 </script>
