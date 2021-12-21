@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>problem1</title>
+    <style>
+        body >div {
+            margin-left: 10%;
+        }
+        .rotate{
+            width:500px;
+            display:flex;
+            justify-content:space-between;
+        }
+        .box{
+            width:70px;
+            height:70px;
+            text-align: center;
+            font-size:50px;
+            background: red;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .rotate-45:hover{
+            transform:  rotate(45deg);
+        }
+        .rotate-90:hover{
+            transform:  rotate(90deg);
+        }
+        .rotate-180:hover{
+            transform:  rotate(180deg);
+        }
+        .rotate-270:hover{
+            transform:  rotate(270deg);
+        }
+
+        .translate:hover{
+            transform:  translate(4px);
+        }
+        .translate-2:hover{
+            transform:  translate(8px);
+        }
+        .translate-4:hover{
+            transform:  translate(16px);
+        }
+        .translate-8:hover{
+            transform:  translate(32px);
+        }
+        .translate-y:hover{
+            transform:  translateY(4px);
+        }
+        .translate-y-2:hover{
+            transform:  translateY(8px);
+        }
+        .translate-y-4:hover{
+            transform:  translateY(16px);
+        }
+        .translate-y-8:hover{
+            transform:  translateY(32px);
+        }
+
+        .scale:hover{
+            transform:  scale(1.1);
+        }
+        .scale-2:hover{
+            transform:  scale(1.2);
+        }
+        .scale-3:hover{
+            transform:  scale(1.3);
+        }
+        .scale-10:hover{
+            transform:  scale(2);
+        }
+
+        .scale-x:hover{
+            transform:  scalex(1.1);
+        }
+        .scale-x-2:hover{
+            transform:  scalex(1.2);
+        }
+        .scale-x-3:hover{
+            transform:  scalex(1.3);
+        }
+        .scale-x-10:hover{
+            transform:  scalex(2);
+        }
+
+        .scale-y:hover{
+            transform:  scaley(1.1);
+        }
+        .scale-y-2:hover{
+            transform:  scaley(1.2);
+        }
+        .scale-y-3:hover{
+            transform:  scaley(1.3);
+        }
+        .scale-y-10:hover{
+            transform:  scaley(2);
+        }
+
+
+        #Solar{
+            height: 630px;
+            position: relative;
+            width: 500px;
+        }
+
+        .box{
+            background-color: red;
+            transition-property: transform, background;
+            transition-timing-function: cubic-bezier(.07,.82,.78,.44);
+            transition-duration: 1s;
+            transition-delay: 1s;
+        }
+
+        .box:hover{
+            background-color: aquamarine;
+            transform: rotate(360deg) ;
+        }
+        .flex{
+            display: flex;
+        }
+        .spinner{
+            border: 8px solid grey;
+            border-top: 8px solid blue;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: 3s linear 0s infinite spinner;
+        }
+        @keyframes spinner {
+            0%{
+                transform: rotate(0deg);
+            }
+            25%{
+                transform: rotate(270deg);
+                border-top-color: red;
+            }
+            75%{
+                transform: rotate(540deg);
+            }
+            100%{
+                transform: rotate(720deg);
+            }
+        }
+      
+        .planet{
+            width: var(--diameter);
+            height: var(--diameter);
+            top: calc(50% - var(--diameter)/2);
+            left: calc(50% - var(--diameter)/2);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .sun{
+            --moveX: 0px;
+            --diameter: 150px;
+            background: orange;
+            position: absolute;
+        }
+
+        .mercury{
+            --moveX: 100px;
+            --diameter: 20px;
+            background: grey;
+            animation: solarsystem 2s infinite linear;
+        }
+
+        .venus{
+            --moveX: 150px;
+            --diameter: 30px;
+            background: red;
+            animation: solarsystem 2.5s infinite linear;
+        }
+
+        .earth{
+            --moveX: 230px;
+            --diameter: 70px;
+            background: aquamarine;
+            animation: solarsystem 3s infinite linear;
+        }
+
+        .mars{
+            --moveX: 300px;
+            --diameter: 40px;
+            background: orangered;
+            animation: solarsystem 4s infinite linear;
+        }
+
+        @keyframes solarsystem {
+            from{
+                transform: rotate(0deg) translate(var( --moveX ))
+            }
+            to{
+                transform: rotate(360deg) translate(var( --moveX ))
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="rotate">
+        <h1>Rotate</h1>
+        <div class="box rotate-45">
+            ➤
+        </div>
+        <div class="box rotate-90">
+            ➤
+        </div>
+        <div class="box rotate-180">
+            ➤
+        </div>
+        <div class="box rotate-270">
+           ➤
+        </div>
+    </div>
+<hr>
+    <div class="translateDiv">
+        <h1>Translate</h1>
+        <div class="box  translate">
+            ➤
+        </div>
+        <div class="box  translate-2">
+            ➤
+        </div>
+        <div class="box   translate-4">
+            ➤
+        </div>
+        <div class="box   translate-8">
+           ➤
+        </div>
+    </div>
+    <div class="translateDiv">
+        <h1>Translate-Y</h1>
+        <div class="box  translate-y">
+            ➤
+        </div>
+        <div class="box  translate-y-2">
+            ➤
+        </div>
+        <div class="box   translate-y-4">
+            ➤
+        </div>
+        <div class="box   translate-y-8">
+           ➤
+        </div>
+    </div>
+    
+<hr>
+    <div class="scaleDiv">
+        <h1>Scale</h1>
+        <div class="box  scale">
+            ➤
+        </div>
+        <div class="box  scale-2">
+            ➤
+        </div>
+        <div class="box   scale-3">
+            ➤
+        </div>
+        <div class="box   scale-10">
+           ➤
+        </div>
+    </div>
+    <div class="scaleDiv-X">
+        <h1>Scale-X</h1>
+        <div class="box  scale-x">
+            ➤
+        </div>
+        <div class="box  scale-x-2">
+            ➤
+        </div>
+        <div class="box   scale-x-3">
+            ➤
+        </div>
+        <div class="box   scale-x-10">
+           ➤
+        </div>
+    </div>
+    <div class="scaleDiv-Y">
+        <h1>Scale-Y</h1>
+        <div class="box  scale-y">
+            ➤
+        </div>
+        <div class="box  scale-y-2">
+            ➤
+        </div>
+        <div class="box   scale-y-3">
+            ➤
+        </div>
+        <div class="box   scale-y-10">
+           ➤
+        </div>
+    </div>
+ <hr>
+ <h1>Planet</h1>
+   <div id="Solar">
+        <div class="planet sun"></div>
+        <div class="planet mercury"></div>
+        <div class="planet venus"></div>
+        <div class="planet earth"></div>
+        <div class="planet mars"></div>  
+    </div> 
+</body>
+</html>
