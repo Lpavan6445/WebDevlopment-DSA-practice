@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body>div{
+            margin-left: 10%;
+        }
+        #hover{
+            width:100px;
+            height:100px;
+            background-color:red;
+            transition: all 0.5s;
+            border-radius: 10px;
+            animation: opasity 3s;
+        }
+        @keyframes opasity {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        #hover:hover{
+            transform: scale(1.2)
+            
+        }
+
+        #slideRigtht{
+            width:100px;
+            height:100px;
+            background-color:red;
+            transition: all 0.5s;
+            border-radius: 10px;
+            animation: slide-right 3s;
+        }
+        @keyframes slide-right{
+            0%{
+                margin-left: 50%;
+                opacity: 0;
+            }
+            100%{
+                margin-left: 10%;
+                opacity: 1;
+            }
+        }
+
+        #rotate{
+            width:100px;
+            height:100px;
+            background-color:red;
+            transition: all 1s;
+            border-radius: 10px;
+        }
+        #rotate:hover{
+            transform: rotate(360deg);
+        }
+
+        #border{
+            width:100px;
+            height:100px;
+            background-color:red;
+            transition: all 1s;
+            border-radius: 10px;
+        }
+        #border:hover{
+            transform: rotate(360deg);
+            border-radius: 50%;
+            border:4px solid blue;
+        }
+        
+        #ease{
+            width:100px;
+            height:100px;
+            background-color:red;
+            border-radius: 10px;
+            animation: slide-right ease 2s;
+        }
+        #ease-in{
+            width:100px;
+            height:100px;
+            background-color:red;
+            border-radius: 10px;
+            animation: slide-right ease-in 2s;
+        }
+        #ease-out{
+            width:100px;
+            height:100px;
+            background-color:red;
+            border-radius: 10px;
+            animation: slide-right ease-out 2s;
+        }
+        #ease-in-out{
+            width:100px;
+            height:100px;
+            background-color:red;
+            border-radius: 10px;
+            animation: slide-right ease-in-out 2s;
+        }
+        
+    </style>
+</head>
+<body>
+    
+     <div id="hover">
+        <h1>Hover&<br>Opacity</h1>
+     </div>
+<hr>
+     <div id="slideRigtht">
+        <h1>slide-rigtht</h1>
+     </div>
+<hr>
+     <div id="rotate">
+        <h1>rotate</h1>
+     </div>
+<hr>
+     <div id="border">
+        <h2>Border</h2>
+     </div>
+<hr>
+      <!--Problem-6------->
+      <div id="ease">
+        <h2>ease</h2>
+     </div>
+     <div id="ease-in">
+        <h2>easeIn</h2>
+     </div>
+     <div id="ease-out">
+        <h2>easeOut</h2>
+     </div>
+     <div id="ease-in-out">
+        <h2>easeInOut</h2>
+     </div>
+</body>
+</html>
