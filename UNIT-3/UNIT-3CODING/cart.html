@@ -1,0 +1,144 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0px;
+        }
+            #navbar{
+                display: flex;
+                justify-content: right;
+                background-color: black;
+                color:whitesmoke;
+                padding: 3px;
+                
+            }
+            #navbar > div{
+                padding: 15px 25px;
+                border: 1px solid white;
+                margin-left: 10px;
+            }
+            a{
+                text-decoration: none;
+                color: white
+            }
+      /* <---------------------------------------------------> */
+          
+        #container{
+             display: flex;
+             flex-flow: column wrap;
+              justify-content: center;
+              align-items: center;
+             /* margin: 0 auto; */
+         }
+         #singleProduct{
+             display: flex;
+             flex-direction: row;
+             width: 50%;
+             height: 250px;
+             margin: 20px;
+             border: 1px solid black;
+             background-color: black;
+         }
+         #imgdiv{
+            width: 100% ;
+            height:250px;
+            border: 1px solid black;
+            /* height: 70px; */
+         }
+         #textDiv{
+             padding: 20px;
+             color: whitesmoke;
+             margin-left: 40px;
+         }
+         #titlestring{
+          margin: 0px 
+        } 
+        #cartbtn{
+            width: 100%;
+            padding:10px 15px;
+            background-color: black;
+            color: white;
+        }
+        #cart{
+            margin-left: 20px;
+            font-size: 20px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div><a href="menu.html">Menu</a></div>
+        <div><a href="signup.html">SignUp</a></div>
+        <div><a href="login.html">Login</a></div>
+        <div id="cart"><a href="cart.html">Cart</a></div>
+    </div>
+    <h1 style="text-align:center;">CART PAGE</h1>
+    <h1 id="total" style="text-align:center;">Total</h1>
+    <h4 id="checkout" style=" cursor: pointer; background-color:black;color:white;text-align: center; padding:10px 15px; border: 1px solid black; width:100px; margin:auto" >CHECK OUT</h4>
+    <div id="container">
+        
+    </div>
+
+</body>
+<script>
+
+        var products = JSON.parse(localStorage.getItem("addtocart")) 
+        display(products)
+
+       console.log(products)
+
+     function display(products){
+       console.log(products)
+       var container =document.getElementById('container')
+       var addtocart = document.getElementById('addtocart')||[]
+       var totl = 0
+       products.forEach(function(product,index){
+         console.log(index) 
+     
+         var main = document.createElement("div")
+            main.id ="singleProduct"
+            var imgdiv = document.createElement("div")
+                var img = document.createElement("img")
+                img.id = "imgdiv"
+                img.src = product.strMealThumb
+
+            var textDiv = document.createElement("div")
+                textDiv.id = "textDiv"
+                var title = document.createElement("h4")
+                    title.id = "title"
+                    title.innerHTML =product.strMeal
+                var price = document.createElement("p")
+                    price.id = "price"
+                    price.innerHTML = "200"
+                var total = document.getElementById("total") 
+                 totl = totl+200
+                total.innerHTML =`Total: ${totl}`
+        
+                var cart = document.createElement("button")
+                    cart.id = "cartbtn"
+                    cart.innerHTML = "REMOVE"
+                    cart.addEventListener("click",function(){
+                        // var id = addtocart.indexOf()
+                        
+                        localStorage.setItem("addtocart", JSON.stringify(addtocart))
+                    })
+              imgdiv.append(img)
+             textDiv.append(title,price,cart)
+            main.append(imgdiv,textDiv)
+            container.append(main)
+       })
+    }
+     var checkout = document.getElementById("checkout")
+       checkout.addEventListener("click",function(){
+           window.location.href = "checkout.html"
+       })
+    // search()
+
+
+</script>
+</html>

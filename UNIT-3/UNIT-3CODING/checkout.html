@@ -1,0 +1,135 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0px;
+        }
+            #navbar{
+                display: flex;
+                justify-content: right;
+                background-color: black;
+                color:whitesmoke;
+                padding: 3px;
+                
+            }
+            #navbar > div{
+                padding: 15px 25px;
+                border: 1px solid white;
+                margin-left: 10px;
+            }
+            a{
+                text-decoration: none;
+                color: white
+            }
+      /* <---------------------------------------------------> */
+          
+        #container{
+             display: flex;
+             flex-flow: column wrap;
+              justify-content: center;
+              align-items: center;
+             /* margin: 0 auto; */
+         }
+         #singleProduct{
+             display: flex;
+             flex-direction: row;
+             width: 50%;
+             height: 250px;
+             margin: 20px;
+             border: 1px solid black;
+             background-color: black;
+         }
+         #imgdiv{
+            width: 100% ;
+            height:250px;
+            border: 1px solid black;
+            /* height: 70px; */
+         }
+         #textDiv{
+             padding: 20px;
+             color: whitesmoke;
+             margin-left: 40px;
+         }
+         #titlestring{
+          margin: 0px 
+        } 
+        #cartbtn{
+            width: 100%;
+            padding:10px 15px;
+            background-color: black;
+            color: white;
+        }
+        #cart{
+            margin-left: 20px;
+            font-size: 20px;
+        }
+
+      input{
+          margin-bottom: 20px;
+          padding:10px;
+      }
+
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div><a href="menu.html">Menu</a></div>
+        <div><a href="signup.html">SignUp</a></div>
+        <div><a href="login.html">Login</a></div>
+        <div id="cart"><a href="cart.html">Cart</a></div>
+    </div>
+    <h1 style="text-align:center;">CheckOut PAGE</h1>
+    
+    <div id="container">
+        <input id="name" type="text" placeholder="Enter Name">
+        <input id="address" type="text" placeholder="Enter addres">
+        <input id="pincode" type="text" placeholder="Enter Pincode">
+        <button id="btn">Submit</button>
+    </div>
+
+</body>
+ <script>
+     var name = document.getElementById("name").value;
+     var address = document.getElementById("address").value
+     var pincode = document.getElementById("pincode").value
+     
+     var arr = []
+     var obj = {
+         name:name,
+         address:address,
+         pincode:pincode,
+     }
+     var btn = document.getElementById("btn")
+     btn.addEventListener("click", function() {
+         arr.push(obj)
+         localStorage.setItem("bill",arr)
+           alerting
+            var alerting =setTimeout(function() {
+                alert("Your Order is Accepted")
+                alerting2
+            },1000)
+            var alerting2 =setTimeout(function() {
+                alert("Your order is being cooked ")
+                alerting3
+            },3000)
+            var alerting3 =setTimeout(function() {
+                alert("Your order is ready ")
+                alerting4
+            },8000)
+            var alerting4 =setTimeout(function() {
+                alert("Order out for delivery ")
+                alerting5
+            },10000)
+            var alerting5 =setTimeout(function() {
+                alert("Order delivered ")
+                window.location.href ="menu.html"
+            },12000)
+            })
+     
+ </script>
+
+<script>

@@ -1,0 +1,38 @@
+#container{
+    display:flex;
+    flex-flow: row;
+    margin: auto;
+ }
+ #sidebar{
+     width:10%;
+     height:500px;
+     position: fixed;
+     border:1px solid black; 
+     text-align: center;
+     /* align-items: center; */
+    justify-content: center;
+    /* top:30% */
+ }
+ #sidebar>h2{
+     padding-top: 10px;
+ }
+ #rightbar{
+    padding-left: 150px;
+    width:70%;
+    /* width:100%; */
+    /* border:1px solid red; */
+    display: flex;
+    flex-direction: col;
+    
+    flex-wrap: wrap;
+
+    /* height: 300px; */
+}
+#rightbar>h2{
+    cursor: pointer;
+}
+ a{
+     text-decoration:none;
+     color:tomato;
+ }
+ 

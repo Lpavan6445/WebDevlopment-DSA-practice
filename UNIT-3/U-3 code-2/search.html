@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="components/navbarStyle.css">
+    <link rel="stylesheet" href="components/showNews.css">
+
+    <title>Document</title>
+    <style>
+        #srch{
+          display: flex;
+          height: 30px;
+          /* border: 1px solid; */
+          justify-content: center;
+          padding: 10px;
+        }
+        #srch > input{
+            width:300px;
+      
+        }
+    </style>
+</head>
+<body>
+    <div id="srch">
+        <input id="input" type="text" placeholder="enter">
+        <button id="sear">Search</button>
+    </div>
+     <div id="main">
+        
+     </div>
+</body>
+<script type="module">
+ import {sidebar} from '/components/sidebar.js'
+    
+     
+    var main = document.getElementById("main")
+    main.innerHTML = sidebar()
+    var sear = document.getElementById("sear")
+      sear.addEventListener("click",GetData)
+    async function GetData(){
+        var input = document.getElementById("input").value
+        console.log(input)
+        var response = await fetch(`https://newsapi.org/v2/everything?q=${input}&sortBy=popularity&apiKey=c320737f03264badbdb34e83c2bdb908`)
+        var data = await response.json();
+        console.log(data)
+        showData(data.articles)
+    } 
+    
+    function showData(products) {
+      let rightbar = document.getElementById("rightbar")
+      rightbar.innerHTML=""
+     products.forEach(function(el){
+        //  console.log(el)
+       
+        let subdiv= document.createElement("div")
+          subdiv.id="subdiv"
+          subdiv.addEventListener("click",function(){
+              var arr = []
+              arr.push(el)
+             localStorage.setItem("news",JSON.stringify(arr))  
+            window.location.href ="news.html"
+          })
+          let subdiv1 = document.createElement("div")
+            subdiv1.id="subdiv1"  
+            let title = document.createElement("h3")
+            title.textContent = el.title
+           subdiv1.append(title)
+          let subdiv2 = document.createElement("div")
+            let descrip = document.createElement("p")
+            descrip.textContent = el.description
+            subdiv2.append(descrip)
+          let subdiv3 = document.createElement("div")
+             let img = document.createElement("img")
+             img.src = el.urlToImage
+             subdiv3.append(img)
+          subdiv.append(subdiv1,subdiv2,subdiv3)
+          rightbar.append(subdiv) 
+     })
+    }   
+</script>
+</html>
