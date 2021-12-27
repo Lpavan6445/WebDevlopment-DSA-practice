@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<style>
+        input{
+            height: 30px;
+            border-radius: 5%;  
+        }
+        table{
+            text-align: center; 
+            border-spacing: 15px;
+			font-size: 20px;
+			font-family: sans-serif;
+        }
+        th, td,tr {
+            border: 1px solid black;
+            height: 50px; 
+        }
+		td{
+			width: 150px;
+		}
+		#submit{
+            background-color: none;
+            width: 100px;
+			height: 35px;
+			margin-left: 10px;
+        }
+		.del{
+			background-color:white;
+			font-size: 20px;
+			border: none;
+		}
+		
+	</style>
+</head>
+<body>
+	<h1>SHOPPING LIST</h1>
+	<form id="form">
+		<label >Name</label>
+		<input id="name" type="text" placeholder="Item Name">
+		<label for="">Quantity</label>
+		<input id="quant" type="number" placeholder="Quantity">
+		<button id="submit">Add Item</button>
+	</form>
+    <table>
+		<thead>
+			<tr>
+				<td>Item</td>
+				<td>Quantity</td>
+				<td>Delete</td>	
+			</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+	</table>
+
+</body>
+<script>
+
+	document.querySelector("form").addEventListener("submit",addItem);
+	var shoppingList= JSON.parse(localStorage.getItem("localstorageList")) ||  []
+	
+	function addItem(e){
+		e.preventDefault()
+		var list={
+			//NOTE:- "form.name.value" this syntax only works for forms not works without form
+			name: form.name.value,
+			quant: form.quant.value,
+		} 
+		shoppingList.push(list)
+		localStorage.setItem("localstorageList",JSON.stringify(shoppingList))
+		showList(shoppingList);
+	}
+
+	window.addEventListener("load",function(){
+		var shoppingList= JSON.parse(localStorage.getItem("localstorageList"));
+	    // below is for after refresh also shows the list
+		showList(shoppingList)
+	});
+
+     function showList(shoppingList){
+		document.querySelector("tbody").innerHTML = "";
+		
+		shoppingList.map(function (el, index){
+			var tr=document.createElement("tr");
+
+			var td1=document.createElement("td");
+			td1.textContent=el.name
+
+			var td2=document.createElement("td");
+			td2.textContent=el.quant
+
+			var td3=document.createElement("td");
+			td3.innerHTML="<button class='del'>Delete</button>"
+			td3.addEventListener("click",function(){
+				del(index);
+			})
+
+			tr.append(td1, td2, td3)
+			
+			document.querySelector("tbody").append(tr);
+		})   
+   }
+
+   function del(index){
+	   shoppingList.splice(index,1)
+       localStorage.setItem("localstorageList", JSON.stringify(shoppingList));
+       showList(shoppingList)
+   }
+
+</script>
+
+</html>
