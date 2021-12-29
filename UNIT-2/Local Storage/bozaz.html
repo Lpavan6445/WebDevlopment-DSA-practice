@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: grid;
+            grid-template-areas: "form prodInfo";
+           font-family: sans-serif;
+            width: 1200px;
+            margin: auto;
+        }
+        h1{
+            color: blue;
+        }
+        .form{
+            padding-left: 100px;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+        select{
+            height: 30px;
+        }
+        input{
+            height: 30px;
+        }
+        label{
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        #descri{
+          padding-bottom: 50px;
+        }
+        button{
+            width: 55px;
+            padding: 7px;
+            margin-top: 5px;
+            border: none;
+            background-color: blue;
+            color: white;
+        }
+        table{
+            width: 500px;
+            text-align: center; 
+            border-spacing: 15px;
+        }
+        th, td,tr {
+            border: 1px solid black;
+            height: 50px; 
+        }
+        td{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <h1>Add Product</h1>
+            <form id="form">
+                <label for="">Category</label>
+                <select id="cat">
+                    <option value="Home Appliance">Home Appliance</option>
+                    <option value="Electronics"></option>
+                    <option value="Furniture"></option>     
+                </select>
+                <label for="">Title</label>
+                <input id="title" type="text" placeholder="some new">
+                <label for="">Description</label>
+                <input id="descri" type="text" placeholder="home">
+                <label for="">Price</label>
+                <input id="number" type="number" placeholder="Price">
+                <button id="submit">Add</button>
+            </form>
+        </div>
+        <div id="prodInfo">
+            <h1>Product Info</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+  document.querySelector("form").addEventListener("submit",addItem);
+  var prodInfo= JSON.parse(localStorage.getItem("localProdStore")) ||  []
+  var count= 1
+  function addItem(e){
+		e.preventDefault()
+		var list={
+			//NOTE:- "form.name.value" this syntax only works for forms not works without form
+		    coun:count,
+            cat:form.title.value,
+            title:form.title.value,
+            descri: form.descri.value,
+			number: form.number.value,
+		}  
+         count++
+		prodInfo.push(list)
+		localStorage.setItem("localProdStore",JSON.stringify(prodInfo))
+		showList(prodInfo);
+	}
+    window.addEventListener("load",function(){
+		var prodInfo= JSON.parse(localStorage.getItem("localProdStore"));
+        showList(prodInfo)
+	});
+	
+    function showList(){
+        document.querySelector("tbody").innerHTML = "";
+        prodInfo.map(function (el, index){
+			var tr=document.createElement("tr");
+
+			var td1=document.createElement("td");
+			td1.textContent= el.coun
+
+			var td2=document.createElement("td");
+			td2.textContent= el.cat
+
+            var td3=document.createElement("td");
+			td3.textContent= el.title
+
+            var td4=document.createElement("td");
+			td4.textContent= el.descri
+
+            var td5=document.createElement("td");
+			td5.textContent= el.number
+
+			tr.append(td1, td2, td3, td4, td5)
+			
+			document.querySelector("tbody").append(tr);
+		})
+    }
+
+
+ </script>
+
+</html>
