@@ -15,6 +15,7 @@ router.get("/",async (req,res)=>{
     }
 })
 
+
 router.post("",crudController(Book).post)
 // router.post("/",async (req,res)=>{
 //      try{
@@ -25,6 +26,19 @@ router.post("",crudController(Book).post)
 //      }
 // })
 router.patch("/:id",crudController(Book).updateOne)
+
+route.patch("/:id/checking", async (req, res) => {
+    try {
+      const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+      })
+        .lean()
+        .exec();
+      return res.status(200).send(book);
+    } catch (err) {
+      return res.status(500).send(err.message);
+    }
+  });
 // router.patch("/:id", async (req, res) => {
 //     try {
 //       const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
