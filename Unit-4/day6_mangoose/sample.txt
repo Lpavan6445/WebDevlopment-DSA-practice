@@ -1,3 +1,49 @@
+////////////////////////////
+app.get("/sections/:id/not_checkedout", async (req, res) => {
+  try {
+    const sections = await Section.findById(req.params.id)
+      .populate({
+        path: "books_id",
+        select: { is_checked: false, book_name: 1 },
+      })
+      .lean()
+      .exec(); //db.users => mongoose object => json object (thennable) i.e. why .lean().exec()
+    return res.send(sections);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+});
+////////////////////////////////
+app.get("/sections/:id/:authid", async (req, res) => {
+  try {
+    const sections = await Section.findById(req.params.id, req.params.authid)
+      .populate({ path: "books_id", select: { book_name: 1 } })
+      .lean()
+      .exec(); //db.users => mongoose object => json object (thennable) i.e. why .lean().exec()
+    return res.send(sections);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+//////////////////////////////
+app.patch("/books/:id/checking", async (req, res) => {
+  try {
+    const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    })
+      .lean()
+      .exec();
+    return res.status(200).send(book);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+});
+
+
+
+
+
 const crudController = require("./crud.controller");
 
 const router = express.Router();
