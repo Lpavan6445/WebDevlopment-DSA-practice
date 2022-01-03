@@ -25,6 +25,7 @@ app.use(express.json());
 app.use("/book",bookController)
 app.use("/author",authorController)
 app.use("/section",sectionController)
+app.use("/checkout",sectionController)
 
 app.listen("2350", async()=>{
     try{
