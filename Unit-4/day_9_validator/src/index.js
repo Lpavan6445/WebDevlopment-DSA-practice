@@ -4,7 +4,6 @@ const userController = require('./controllers/user.controller');
 
 app.use(express.json())
 
-app.get('/users', userController)
-app.patch('/post', userController)
+app.use('/users', userController)
 
 module.exports = app
