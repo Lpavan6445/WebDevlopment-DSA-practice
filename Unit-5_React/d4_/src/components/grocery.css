@@ -1,0 +1,6 @@
+#grocery{
+  display: flex;
+}
+#grocery>div{
+  padding-right: 10px;
+}
