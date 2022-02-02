@@ -1,0 +1,23 @@
+const path = require("path")
+
+module.exports={
+    entry:"./src/index",
+    output:{
+        path: path.resolve(__dirname,"build"),
+        filename: "bundle.js"
+    },
+    mode: 'development',
+    module:{
+        rules: [
+                  {
+                    test: /\.css$/i,
+                    use: ["style-loader", "css-loader"],
+                  },
+                 {
+                  test: /\.(png|jpe?g|gif)$/i,
+                  use: ['file-loader']
+                 }
+      
+               ]
+    }
+}
