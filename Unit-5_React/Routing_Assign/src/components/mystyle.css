@@ -1,0 +1,16 @@
+.navbar{
+    font-size: 25px;
+    height:50px;
+   border-bottom: 2px solid blue;
+}
+.nav{
+    text-decoration: none;
+    font-weight:bold;
+    color:black; 
+    margin-left: 10px;
+}
+
+img{
+    width:200px;
+    height:200px
+}
