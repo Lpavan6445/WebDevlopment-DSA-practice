@@ -1,55 +1,62 @@
-import {createStore} from "redux"
+import { createStore } from "redux";
+const reducer = (store, action) => {
+  switch (action.type) {
+case "ADD_TODO":{
+      return { ...store, todo: [...store.todo, action.payload] };
+    }
+    case "UPDATE_TODO":{
+      return { ...store,
+        todo: store.todo.map((x)=>{
+                if(x.id!=action.payload.id){
+                  return x
+                }else{
+                  return action.payload
+                }
+        })
+    }}
+    case "DELETE_TODO":{
+ return { ...store,
+        todo: store.todo.filter((x)=>{
+             return x.id!==action.payload.id
+        })
+    }}
+    default:{
+      return store;
+    }
+  }
+};
 
-// var addTodo ={type:"addTodo", payload:1}
+const init = { todo: [] };
 
-
-// class Store{
-//   constructor(reducer, init){
-//      this.reducer = reducer;
-//      this.state = init;
-//   }
-//   getState(){
-//     return this.state;
-//   }
-//   dispatch(actions){
-//     this.state = this.reducer(this.state, actions)
-//   }
-// }
-const reducer = (store, action)=>{
-   switch(action.type){
-   //   case "INC_COUNT":{
-   //      return{...store, count: store.count+action.payload}
-   //   }
-   //   case "DEC_COUNT":{
-   //      return{...store, count: store.count-action.payload}
-   //   }
-     case "ADD_TODO":{
-              return{...store, todo: [...store.todo , action.payload]}
-     }
-     case "UPDATE_TODO":{
-      return{...store, todo: [...store.todo ,  action.payload:action.payload]}
-     }
-     default:
-        return store
-   }
-}
+// KISS
+const store = createStore(reducer, init);
 
 
-const init ={todo: []}
-// const store = new Store(reducer, init);
-const store = createStore(reducer, init)
+store.dispatch({
+  type: "ADD_TODO",
+  payload: 
+    { id: 1, status: false, title: "Learn Redux" },
+  
+});
+console.log(store.getState());
+store.dispatch({
+  type: "ADD_TODO",
+  payload: 
+    { id: 2, status: false, title: "Learn Redux" },
+  
+})
+console.log(store.getState());
+store.dispatch({
+  type: "UPDATE_TODO",
+  payload: 
+    { id: 2, status: false, title: "Learn JS" },
+  
+})
+console.log(store.getState());
+store.dispatch({
+  type: "DELETE_TODO",
+  payload: 
+    { id: 1, status: false, title: "Learn HTML" },
+})
 
-// console.log(store.getState())
-// store.dispatch({type:"INC_COUNT", payload:1})
-// console.log(store.getState())
-// store.dispatch({type:"DEC_COUNT", payload:1})
-// console.log(store.getState())
-store.dispatch({type:"ADD_TODO", payload:"Hello"})
-console.log(store.getState())
-
-store.dispatch({type:"ADD_TODO", payload:"I am"})
-console.log(store.getState())
-
-store.dispatch({type:"ADD_TODO", payload:"Pavan"})
-console.log(store.getState())
-
+console.log(store.getState());
