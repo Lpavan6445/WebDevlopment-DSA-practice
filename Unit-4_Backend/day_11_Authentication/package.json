@@ -1,0 +1,19 @@
+{
+  "name": "day_11_authentication",
+  "version": "1.0.0",
+  "description": "Authention:\r    1)Register:\r       a)first check if the email provided is already given to another user\r       b)if yes throw error 400 bad requests\r       c)if not then we will create the user.\r     d)we will hash the password for the user\r     e)we will create the token for the user.\r     f)return the token and the user details.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.6",
+    "nodemon": "^2.0.15"
+  }
+}
